@@ -1,0 +1,46 @@
+@import "./scss/reset.scss";
+
+body {
+  background-color: #1c1d1f;
+}
+.container {
+  max-width: 1630px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.home {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url("./assets/home/bg-1.png");
+    max-width: 1135px;
+    width: 100%;
+    height: 1470px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    top: 102px;
+    left: 0;
+    z-index: -1;
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: minmax(auto, 1340px) minmax(auto, 440px);
+    grid-gap: 30px;
+  }
+}
+
+.swiper-pagination-bullet {
+  background-color: transparent;
+  border: 1px solid #fff;
+  height: 10px !important;
+  width: 10px !important;
+  &-active {
+    background-color: transparent;
+  }
+}
+.swiper-pagination-bullet-active {
+  background-color: transparent !important;
+}

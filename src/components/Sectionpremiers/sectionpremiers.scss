@@ -1,0 +1,234 @@
+.sectionpremiers {
+  padding-bottom: 400px;
+  &__title {
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 35px;
+    color: #fff;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #81becb;
+    margin-bottom: 40px;
+  }
+  &__inputs {
+    display: flex;
+    position: relative;
+  }
+  &__data {
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 10px 15px;
+    background: #1b1e1e;
+    border: 2px solid #252a2c;
+    border-radius: 93px;
+    width: 100%;
+    transition: all 0.2s;
+    color: #fff;
+    cursor: pointer;
+    &:focus {
+      border: 2px solid rgb(149, 149, 149);
+    }
+    &-box {
+      max-width: 210px;
+      width: 100%;
+      & + & {
+        margin-left: 12px;
+      }
+    }
+    &-list {
+      padding: 10px 15px;
+      background: #1b1e1e;
+      border: 2px solid #252a2c;
+      border-radius: 22px;
+      position: absolute;
+      top: 55px;
+      left: 0;
+      max-width: 210px;
+      width: 100%;
+    }
+    &-item {
+      font-family: "Rubik", sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 16px;
+      color: #fff;
+      padding: 3px 0;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover {
+        color: #81becb;
+      }
+      &--active {
+        color: #81becb;
+      }
+    }
+    &-input {
+      &--error {
+        border: 2px solid #b70707;
+        &-text {
+          color: #b70707;
+          font-family: "Rubik", sans-serif;
+          font-weight: 300;
+          font-size: 15px;
+          line-height: 16px;
+          margin-top: 7px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+  &__counter {
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+  }
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 40px 30px;
+    padding-top: 30px;
+  }
+  &__item {
+    border: 1px solid #81becb;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    &-img {
+      height: 370px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    &-textbox {
+      padding: 30px 10px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &-title {
+      font-family: "Rubik", sans-serif;
+      font-weight: 300;
+      font-size: 27px;
+      line-height: 29px;
+      color: #fff;
+    }
+    &-genres {
+      display: flex;
+      flex-wrap: wrap;
+      grid-gap: 6px;
+    }
+    &-genre {
+      padding: 3px 6px;
+      border-radius: 5px;
+      background-color: #81becb;
+      font-family: "Rubik", sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 15px;
+      color: #000;
+    }
+    &-release {
+      margin-top: auto;
+      font-family: "Rubik", sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 19px;
+      color: #81becb;
+    }
+    &-countries {
+      display: flex;
+      flex-wrap: wrap;
+      &-box {
+        display: flex;
+        margin: 8px 0;
+      }
+      &-title {
+        margin-right: 3px;
+        font-family: "Rubik", sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 19px;
+        color: #fff;
+      }
+    }
+    &-country {
+      font-family: "Rubik", sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 19px;
+      color: #fff;
+      & + &{
+        margin-left: 3px;
+        &::before{
+          content: ", ";
+          margin-left: -2px;
+        }
+      }
+    }
+  }
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    &-btn {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 2px solid #81becb;
+      cursor: pointer;
+      transition: all 0.2s;
+      svg {
+        width: 15px;
+        height: 15px;
+        path {
+          transition: all 0.2s;
+          fill: #81becb;
+        }
+      }
+      &:hover {
+        border: 2px solid #fff;
+        svg {
+          path {
+            fill: #fff;
+          }
+        }
+      }
+      &--diswork {
+        border: 2px solid #515151;
+        svg {
+          path {
+            fill: #515151;
+          }
+        }
+      }
+    }
+    &-count {
+      font-family: "Rubik", sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: #fff;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 2px solid #81becb;
+      margin: 0 10px;
+    }
+    &-next {
+      transform: rotate(180deg);
+    }
+  }
+}
