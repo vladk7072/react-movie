@@ -9,14 +9,18 @@
   }
   &__title {
     position: absolute;
-    top: 40px;
-    left: 90px;
+    top: 10px;
+    left: 10px;
     right: 10px;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "Philosopher", sans-serif;
+    font-weight: 400;
     font-size: 65px;
     line-height: 67px;
     color: #fff;
-    max-width: 350px;
-    width: 100%;
+    text-shadow: 1px 1px 2px #000;
   }
 }

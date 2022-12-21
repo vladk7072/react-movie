@@ -1,5 +1,5 @@
 .sectionpremiers {
-  padding-bottom: 400px;
+  padding-bottom: 100px;
   &__title {
     font-family: "Rubik", sans-serif;
     font-weight: 500;
@@ -24,10 +24,14 @@
     border: 2px solid #252a2c;
     border-radius: 93px;
     width: 100%;
-    transition: all 0.2s;
+    transition: border 0.2s;
     color: #fff;
     cursor: pointer;
     &:focus {
+      border: 2px solid rgb(149, 149, 149);
+      outline: transparent;
+    }
+    &--active {
       border: 2px solid rgb(149, 149, 149);
     }
     &-box {
@@ -56,7 +60,7 @@
       color: #fff;
       padding: 3px 0;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: color 0.2s;
       &:hover {
         color: #81becb;
       }
@@ -96,26 +100,27 @@
     padding-top: 30px;
   }
   &__item {
-    border: 1px solid #81becb;
+    border: 2px solid #81becb;
     border-radius: 4px;
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
     &-img {
       height: 370px;
       object-fit: cover;
-      border-radius: 4px;
+      border-radius: 4px 0 0 4px;
     }
     &-textbox {
       padding: 30px 10px 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      align-items: flex-start;
     }
     &-title {
       font-family: "Rubik", sans-serif;
       font-weight: 300;
-      font-size: 27px;
-      line-height: 29px;
+      font-size: 23px;
+      line-height: 26px;
       color: #fff;
     }
     &-genres {
@@ -129,16 +134,15 @@
       background-color: #81becb;
       font-family: "Rubik", sans-serif;
       font-weight: 300;
-      font-size: 13px;
-      line-height: 15px;
+      font-size: 14px;
+      line-height: 16px;
       color: #000;
     }
     &-release {
-      margin-top: auto;
       font-family: "Rubik", sans-serif;
       font-weight: 300;
-      font-size: 16px;
-      line-height: 19px;
+      font-size: 15px;
+      line-height: 18px;
       color: #81becb;
     }
     &-countries {
@@ -152,8 +156,8 @@
         margin-right: 3px;
         font-family: "Rubik", sans-serif;
         font-weight: 300;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 15px;
+        line-height: 18px;
         color: #fff;
       }
     }
@@ -163,12 +167,35 @@
       font-size: 16px;
       line-height: 19px;
       color: #fff;
-      & + &{
+      & + & {
         margin-left: 3px;
-        &::before{
+        &::before {
           content: ", ";
           margin-left: -2px;
         }
+      }
+    }
+    &-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      grid-gap: 10px;
+    }
+    &-link {
+      font-family: "Rubik", sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 18px;
+      color: #81becb;
+      padding: 3px 6px;
+      border-radius: 5px;
+      background-color: transparent;
+      border: 2px solid #81becb;
+      transition: ease 0.2s;
+      &:hover {
+        background-color: #81becb;
+        color: #fff;
       }
     }
   }
@@ -186,12 +213,12 @@
       border-radius: 50%;
       border: 2px solid #81becb;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: border 0.2s;
       svg {
         width: 15px;
         height: 15px;
         path {
-          transition: all 0.2s;
+          transition: fill 0.2s;
           fill: #81becb;
         }
       }

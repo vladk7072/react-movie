@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLazyGetPremiersFilmsQuery } from "../../redux/rtk/homeRtk";
 import "./sectionpremiers.scss";
+import { PremiersSkeleton } from "./PremiersSkeleton";
+import { PaginationSkelet } from "./PaginationSkelet";
+import { Slide } from "./Slide";
 
 export const Sectionpremiers = () => {
-  const [getPremiers, { data: premiersData, isSuccess: premiersSuccess }] =
-    useLazyGetPremiersFilmsQuery();
-
-  const [portion, setPortion] = useState(16);
-  const [sliceFrom, setSliceFrom] = useState(0);
-  const premiersItemsPortion = premiersData?.items.slice(sliceFrom, portion);
-  const setDefaultPagination = () => {
-    setPortion(16);
-    setSliceFrom(0);
-  };
-  const [countPagination, setCountPagination] = useState(1);
-  console.log(premiersData);
-
   const monthList = [
     "январь",
     "февраль",
@@ -45,7 +35,22 @@ export const Sectionpremiers = () => {
     "December",
   ];
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [getPremiers, { data: premiersData, isSuccess: premiersSuccess }] =
+    useLazyGetPremiersFilmsQuery();
+
+  const [portion, setPortion] = useState(16);
+  const [sliceFrom, setSliceFrom] = useState(0);
+  const [countPagination, setCountPagination] = useState(1);
+  const [isErrorForLoad, setIsErrorForLoad] = useState(false);
+  const [nextDisable, setNextDisable] = useState(false);
+
+  const premiersItemsPortion = premiersData?.items.slice(sliceFrom, portion);
+  const setDefaultPagination = () => {
+    setPortion(16);
+    setSliceFrom(0);
+  };
+
+  const [isOpenList, setIsOpenList] = useState(false);
   const [activeMonth, setActiveMonth] = useState(0);
   const [year, setYear] = useState("2022");
 
@@ -54,7 +59,9 @@ export const Sectionpremiers = () => {
   const setClickItem = (i: number) => {
     setCancelValueYear(false);
     setActiveMonth(i);
-    setIsOpen(false);
+    setIsOpenList(false);
+    setCountPagination(1);
+    setNextDisable(false);
     if (year.length === 4) {
       const numYear = Number(year);
       setCancelValueYear(false);
@@ -69,6 +76,9 @@ export const Sectionpremiers = () => {
   };
 
   const setFetch = () => {
+    setCountPagination(1);
+    setNextDisable(false);
+    // @ts-ignore
     if (year.length === 4) {
       const numYear = Number(year);
       setCancelValueYear(false);
@@ -89,6 +99,7 @@ export const Sectionpremiers = () => {
     });
     setDefaultPagination();
     setCountPagination(1);
+    setNextDisable(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -98,6 +109,10 @@ export const Sectionpremiers = () => {
       setSliceFrom(portion);
       setPortion(portion + 16);
       setCountPagination(countPagination + 1);
+      // @ts-ignore
+      if (premiersData?.total < portion + 16) {
+        setNextDisable(true);
+      }
     }
   };
   const setPrevPagination = () => {
@@ -107,20 +122,39 @@ export const Sectionpremiers = () => {
       setSliceFrom(portion - 32);
       setCountPagination(countPagination - 1);
     }
+    setNextDisable(false);
   };
+
+  const monthRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (!event.path.includes(monthRef.current)) {
+        setIsOpenList(false);
+      }
+    };
+    document.body.addEventListener("click", handleClickOutside);
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="sectionpremiers">
-      <h2 className="sectionpremiers__title">Найти релизы определенных дат</h2>
+      <h2 className="sectionpremiers__title">Найти релизы по дате</h2>
       <div className="sectionpremiers__inputs">
-        <div className="sectionpremiers__data-box">
+        <div ref={monthRef} className="sectionpremiers__data-box">
           <div
-            className="sectionpremiers__data"
-            onClick={() => setIsOpen(true)}
+            className={
+              isOpenList
+                ? "sectionpremiers__data sectionpremiers__data--active"
+                : "sectionpremiers__data"
+            }
+            onClick={() => setIsOpenList(true)}
           >
             {monthList[activeMonth]}
           </div>
-          {isOpen && (
+          {isOpenList && (
             <ul className="sectionpremiers__data-list">
               {monthList.map((month, i) => (
                 <li
@@ -164,49 +198,18 @@ export const Sectionpremiers = () => {
         )}
       </div>
       <div className="sectionpremiers__items">
-        {premiersSuccess &&
-          premiersItemsPortion?.map((item) => (
-            <div className="sectionpremiers__item" key={item.kinopoiskId}>
-              <div className="sectionpremiers__item-image">
-                <img
-                  className="sectionpremiers__item-img"
-                  src={item.posterUrlPreview}
-                  alt=""
-                />
-              </div>
-              <div className="sectionpremiers__item-textbox">
-                <h4 className="sectionpremiers__item-title">{item.nameRu}</h4>
-                <div className="sectionpremiers__item-countries-box">
-                  <div className="sectionpremiers__item-countries-title">
-                    {item.countries.length === 1 ? (
-                      <span>Странa:</span>
-                    ) : (
-                      <span>Страны:</span>
-                    )}
-                  </div>
-                  <ul className="sectionpremiers__item-countries">
-                    {item.countries.map((country, i) => (
-                      <li className="sectionpremiers__item-country" key={i}>
-                        {country.country}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <ul className="sectionpremiers__item-genres">
-                  {item.genres.map((itemGenre, i) => (
-                    <li className="sectionpremiers__item-genre" key={i}>
-                      {itemGenre.genre}
-                    </li>
-                  ))}
-                </ul>
-                <div className="sectionpremiers__item-release">
-                  Дата релиза: {item.premiereRu}
-                </div>
-              </div>
-            </div>
-          ))}
+        {premiersSuccess
+          ? premiersItemsPortion?.map((item) => (
+              <Slide
+                key={item.kinopoiskId}
+                item={item}
+                isErrorForLoad={isErrorForLoad}
+                setIsErrorForLoad={setIsErrorForLoad}
+              />
+            ))
+          : [...new Array(4)].map((_, i) => <PremiersSkeleton key={i} />)}
       </div>
-      {premiersSuccess && (
+      {premiersSuccess ? (
         <div className="sectionpremiers__pagination">
           <div
             className={
@@ -224,13 +227,21 @@ export const Sectionpremiers = () => {
             {countPagination}
           </div>
           <div
-            className="sectionpremiers__pagination-btn sectionpremiers__pagination-next"
+            className={
+              nextDisable
+                ? "sectionpremiers__pagination-btn sectionpremiers__pagination-next sectionpremiers__pagination-btn--diswork"
+                : "sectionpremiers__pagination-btn sectionpremiers__pagination-next"
+            }
             onClick={() => setNextPagination()}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
               <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
             </svg>
           </div>
+        </div>
+      ) : (
+        <div className="sectionpremiers__pagination">
+          <PaginationSkelet />
         </div>
       )}
     </div>
