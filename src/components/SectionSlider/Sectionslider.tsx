@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetTopFilmsQuery } from "../../redux/rtk/homeRtk";
 import { ItemTopFilmsResponse } from "../../models/top-films";
-import { Sectionsliderskeleton } from "./SectionSliderSkeleton";
+import { Sectionsliderskeleton } from "./skelets/SectionSliderSkeleton";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 
 import "./sectionslider.scss";
 import { Slide } from "./Slide";
+import { Title } from "../Title/Title";
 
 export const Sectionslider = () => {
 
@@ -21,10 +22,7 @@ export const Sectionslider = () => {
 
   return (
     <div className="sectslider">
-      <h2 className="sectslider__title" ref={swiperNavNextref}>
-        Лучшие фильмы подборки
-      </h2>
-
+      <Title title="Лучшие фильмы подборки" />
       <div className="sectslider__slider">
         {topSuccess ? (
           <Swiper

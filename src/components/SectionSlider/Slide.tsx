@@ -1,7 +1,8 @@
 import React, { FC, useState } from "react";
 import { ItemTopFilmsResponse } from "./../../models/top-films";
 import "./sectionslider.scss";
-import { SlideSkeleton } from "./SlideSkeleton";
+import { SlideSkeleton } from "./skelets/SlideSkeleton";
+import { Link } from "react-router-dom";
 
 interface PropsType {
   item: ItemTopFilmsResponse;
@@ -12,7 +13,7 @@ export const Slide: FC<PropsType> = ({ item }) => {
 
   return (
     <>
-      <div className="sectslider__image">
+      <Link className="sectslider__image" to={`${"/card/" + item.filmId}`}>
         {isErrorForLoad ? (
           <div className="sectslider__img-error">
             <div className="sectslider__img-box">
@@ -27,8 +28,8 @@ export const Slide: FC<PropsType> = ({ item }) => {
           <img
             className="sectslider__img"
             src={item.posterUrlPreview}
-            alt=""
             onError={() => setIsErrorForLoad(true)}
+            alt=""
           />
         )}
         <svg className="sectslider__rating" viewBox="0 0 200 200">
@@ -67,7 +68,7 @@ export const Slide: FC<PropsType> = ({ item }) => {
           </text>
         </svg>
         <span className="sectslider__item-length">{item.filmLength}</span>
-      </div>
+      </Link>
       <h5 className="sectslider__item-title">
         {item.nameRu}, {item.year}
       </h5>

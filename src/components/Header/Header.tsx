@@ -1,15 +1,15 @@
 import React from "react";
 import "./header.scss";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
     <div className="header">
       <div className="container">
         <div className="header__wrapper">
-          <div className="header__logo">
+          <Link className="header__logo" to={"/home"}>
             <div className="header__logo-title">React Movies</div>
-            <span className="header__logo-text">Включите VPN если не подгружаются данные</span>
-          </div>
+          </Link>
           <div className="header__input-inner">
             <input
               className="header__input"

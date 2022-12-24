@@ -1,15 +1,20 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { homeRtk } from "./rtk/homeRtk";
+import { cardRtk } from "./rtk/cardRtk";
 
 const mainReducer = combineReducers({
   [homeRtk.reducerPath]: homeRtk.reducer,
+  [cardRtk.reducerPath]: cardRtk.reducer,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: mainReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(homeRtk.middleware),
+    middleware: (getDefaultMiddleware) => [
+      ...getDefaultMiddleware(),
+      homeRtk.middleware,
+      cardRtk.middleware,
+    ],
   });
 };
 

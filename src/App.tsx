@@ -1,11 +1,14 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import "./App.scss";
-import { Home } from "./pages/Home";
+import { MainPageModel } from "./pages/MainPageModel";
 
 function App() {
   return (
     <div className="app">
-      <Home />
+      <BrowserRouter>
+        <MainPageModel />
+      </BrowserRouter>
     </div>
   );
 }

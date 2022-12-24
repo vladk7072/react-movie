@@ -104,6 +104,13 @@
     border-radius: 4px;
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
+    &-title {
+      font-family: "Rubik", sans-serif;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 25px;
+      color: #fff;
+    }
     &-img {
       height: 370px;
       object-fit: cover;
@@ -115,13 +122,6 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
-    }
-    &-title {
-      font-family: "Rubik", sans-serif;
-      font-weight: 300;
-      font-size: 23px;
-      line-height: 26px;
-      color: #fff;
     }
     &-genres {
       display: flex;

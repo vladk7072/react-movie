@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLazyGetPremiersFilmsQuery } from "../../redux/rtk/homeRtk";
-import "./sectionpremiers.scss";
-import { PremiersSkeleton } from "./PremiersSkeleton";
-import { PaginationSkelet } from "./PaginationSkelet";
+import { PremiersSkeleton } from "./skelets/PremiersSkeleton";
+import { PaginationSkelet } from "./skelets/PaginationSkelet";
 import { Slide } from "./Slide";
+import { Title } from "../Title/Title";
+import "./sectionpremiers.scss";
 
 export const Sectionpremiers = () => {
   const monthList = [
@@ -141,7 +142,7 @@ export const Sectionpremiers = () => {
 
   return (
     <div className="sectionpremiers">
-      <h2 className="sectionpremiers__title">Найти релизы по дате</h2>
+      <Title title="Найти релизы по дате" />
       <div className="sectionpremiers__inputs">
         <div ref={monthRef} className="sectionpremiers__data-box">
           <div

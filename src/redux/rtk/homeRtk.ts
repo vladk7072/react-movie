@@ -1,6 +1,6 @@
+import { getPremFilms } from "../../models/rtk-body-models/getPremFilms";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { PremiersFilmsResponse } from "../../models/premiers-films";
-// import { FilmsResponse } from "../../models/all-films";
 import { TopFilmsResponse } from "../../models/top-films";
 
 export const homeRtk = createApi({
@@ -18,8 +18,8 @@ export const homeRtk = createApi({
         },
       }),
     }),
-    getPremiersFilms: build.query<PremiersFilmsResponse, {year: number, month: string}>({
-      query: (body: any) => ({
+    getPremiersFilms: build.query<PremiersFilmsResponse, getPremFilms>({
+      query: (body) => ({
         url: `v2.2/films/premieres`,
         headers: {
           "X-API-KEY": "2d6f4996-3732-4ecc-ad4b-6787aed18135",
@@ -31,15 +31,6 @@ export const homeRtk = createApi({
         },
       }),
     }),
-    // getPremierItem: build.query<any, number>({
-    //   query: (body) => ({
-    //     url: `v2.2/films/${body}`,
-    //     headers: {
-    //       "X-API-KEY": "2d6f4996-3732-4ecc-ad4b-6787aed18135",
-    //       "Content-Type": "application/json",
-    //     },
-    //   }),
-    // }),
   }),
 });
 

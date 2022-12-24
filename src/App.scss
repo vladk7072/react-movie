@@ -4,12 +4,12 @@ body {
   background-color: #1c1d1f;
 }
 .container {
-  max-width: 1630px;
+  max-width: 1830px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
-.home {
+.main-page {
   position: relative;
   &::before {
     content: "";
@@ -25,6 +25,8 @@ body {
     left: 0;
     z-index: -1;
   }
+}
+.main-model {
   &__content {
     display: grid;
     grid-template-columns: minmax(auto, 1340px) minmax(auto, 440px);

@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { PremierItemResponse } from "../../models/premiers-films";
-import { SlideSkeleton } from "./SlideSkeleton";
+import { SlideSkeleton } from "./skelets/SlideSkeleton";
+import { Link } from "react-router-dom";
 
 interface PropsType {
   item: PremierItemResponse
@@ -10,10 +11,8 @@ interface PropsType {
 
 export const Slide: FC<PropsType> = ({item, isErrorForLoad, setIsErrorForLoad}) => {
 
-  // const [loadImage, setLoadImage] = useState(true);
-
   return (
-    <div className="sectionpremiers__item" key={item.kinopoiskId}>
+    <Link className="sectionpremiers__item" key={item.kinopoiskId} to={`${"/card/" + item.kinopoiskId}`}> 
       <div className="sectionpremiers__item-image">
         {isErrorForLoad ? (
           <div className="sectslider__img-error">
@@ -30,7 +29,6 @@ export const Slide: FC<PropsType> = ({item, isErrorForLoad, setIsErrorForLoad}) 
             className="sectionpremiers__item-img"
             src={item.posterUrlPreview}
             onError={() => setIsErrorForLoad(true)}
-            onLoad={() => console.log("yessss")}
             alt=""
           />
         )}
@@ -61,14 +59,14 @@ export const Slide: FC<PropsType> = ({item, isErrorForLoad, setIsErrorForLoad}) 
           ))}
         </ul>
         <div className="sectionpremiers__item-footer">
-          <a className="sectionpremiers__item-link" href="/">
+          <div className="sectionpremiers__item-link">
             Более делатально
-          </a>
+          </div>
           <div className="sectionpremiers__item-release">
             Дата релиза: {item.premiereRu}
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
