@@ -101,6 +101,16 @@ export const Sectionpremiers = () => {
     setDefaultPagination();
     setCountPagination(1);
     setNextDisable(false);
+    
+    const handleClickOutside = (event: any) => {
+      if (!event.path.includes(monthRef.current)) {
+        setIsOpenList(false);
+      }
+    };
+    document.body.addEventListener("click", handleClickOutside);
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -127,18 +137,6 @@ export const Sectionpremiers = () => {
   };
 
   const monthRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (!event.path.includes(monthRef.current)) {
-        setIsOpenList(false);
-      }
-    };
-    document.body.addEventListener("click", handleClickOutside);
-    return () => {
-      document.body.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
 
   return (
     <div className="sectionpremiers">

@@ -4,7 +4,7 @@ import { useLazyGetTopItemFilmQuery } from "./../../redux/rtk/cardRtk";
 import "./card.scss";
 
 export const Card = () => {
-  const [getItem, { data: topItemData, isSuccess: topItemSuccess }] =
+  const [getItem, { data: topItemData }] =
     useLazyGetTopItemFilmQuery();
   // const [getVideos, { data: topItemVideos }] = useLazyGetTopItemVideosQuery();
   const path = document.location.pathname;
