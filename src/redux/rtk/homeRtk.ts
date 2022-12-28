@@ -21,13 +21,13 @@ export const homeRtk = createApi({
     getPremiersFilms: build.query<PremiersFilmsResponse, getPremFilms>({
       query: (body) => ({
         url: `v2.2/films/premieres`,
-        headers: {
-          "X-API-KEY": "2d6f4996-3732-4ecc-ad4b-6787aed18135",
-          "Content-Type": "application/json",
-        },
         params: {
           year: body.year,
           month: body.month,
+        },
+        headers: {
+          "X-API-KEY": "2d6f4996-3732-4ecc-ad4b-6787aed18135",
+          "Content-Type": "application/json",
         },
       }),
     }),

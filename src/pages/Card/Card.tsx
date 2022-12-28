@@ -1,22 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Title } from "../../components/Title/Title";
-import { useLazyGetTopItemFilmQuery } from "./../../redux/rtk/cardRtk";
+import { useLazyGetTopItemFilmQuery, useLazyGetTopItemVideosQuery } from "./../../redux/rtk/cardRtk";
 import "./card.scss";
 
 export const Card = () => {
-  const [getItem, { data: topItemData }] =
-    useLazyGetTopItemFilmQuery();
-  // const [getVideos, { data: topItemVideos }] = useLazyGetTopItemVideosQuery();
+  const [getItem, { data: topItemData }] = useLazyGetTopItemFilmQuery();
+  const [getVideo, { data: videosData }] = useLazyGetTopItemVideosQuery();
+
   const path = document.location.pathname;
   const pathId = path.replace("/card/", "");
   console.log(topItemData);
-  // console.log(topItemVideos);
+
+  const [hoursLength, setHoursLength] = useState(0);
+  const [minutesLength, setMinutesLength] = useState(0);
 
   useEffect(() => {
     getItem(pathId);
-    // getVideos(pathId);
+    getVideo(pathId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  console.log(videosData);
+  useEffect(() => {
+    if (topItemData?.filmLength) {
+      const getTimeFromMins = (mins: number) => {
+        setHoursLength(Math.trunc(mins / 60));
+        setMinutesLength(mins % 60);
+      };
+      getTimeFromMins(topItemData?.filmLength);
+    }
+  }, [topItemData]);
+
+  const [isMoreDescription, setIsMoreDescription] = useState(false);
 
   return (
     <div className="card">
@@ -37,7 +51,9 @@ export const Card = () => {
               <div className="card__item-info">
                 <h4 className="card__item-info-title">Продолжительность</h4>
                 <p className="card__item-info-text">
-                  {topItemData?.filmLength}
+                  {`${hoursLength}:${
+                    minutesLength < 10 ? `0${minutesLength}` : minutesLength
+                  }`}
                 </p>
               </div>
               <div className="card__item-info">
@@ -57,6 +73,53 @@ export const Card = () => {
                 </p>
               </div>
             </div>
+            <div className="card__table">
+              <div className="card__table-item">
+                <div className="card__table-title">Жанр</div>
+                <div className="card__table-text-box">
+                  {topItemData?.genres.map((genre, index) => (
+                    <p className="card__table-text" key={index}>
+                      {genre.genre}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              <div className="card__table-item">
+                <div className="card__table-title">Страны</div>
+                <div className="card__table-text-box">
+                  {topItemData?.countries.map((country, index) => (
+                    <p className="card__table-text" key={index}>
+                      {country.country}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+            {topItemData?.description && topItemData?.shortDescription &&  (
+              <div className="card__table">
+                <div className="card__table-title">{topItemData?.nameRu}</div>
+                <p className="card__table-text card__table-text-mt">
+                  {isMoreDescription
+                    ? topItemData?.description
+                    : topItemData?.shortDescription}
+                </p>
+                {isMoreDescription ? (
+                  <div
+                    className="card__table-text card__table-link"
+                    onClick={() => setIsMoreDescription(false)}
+                  >
+                    Меньше
+                  </div>
+                ) : (
+                  <div
+                    className="card__table-text card__table-link"
+                    onClick={() => setIsMoreDescription(true)}
+                  >
+                    Больше
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

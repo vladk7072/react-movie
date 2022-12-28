@@ -4,6 +4,9 @@ import "./App.scss";
 import { MainPageModel } from "./pages/MainPageModel";
 
 function App() {
+
+  
+
   return (
     <div className="app">
       <BrowserRouter>
