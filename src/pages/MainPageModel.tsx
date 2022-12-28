@@ -4,11 +4,11 @@ import { Header } from "../components/Header/Header";
 import { HomeContent } from "./Home/HomeContent";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Card } from "./Card/Card";
-import { Page404 } from "./Page404/Page404";
+import { Page404 } from "./ErrorPages/Page404";
 
 export const MainPageModel = () => {
   return (
-    <div className="main-model">
+    <div className="main-model main-page">
       <Header />
       <div className="main container">
         <div className="main-model__content">

@@ -92,6 +92,11 @@
     display: flex;
     align-items: center;
     margin-left: 12px;
+    svg{
+      height: 40px;
+      width: 40px;
+      animation: load infinite 1s linear;
+    }
   }
   &__items {
     display: grid;
@@ -100,7 +105,6 @@
     padding-top: 30px;
   }
   &__item {
-    border: 2px solid #81becb;
     border-radius: 4px;
     display: grid;
     grid-template-columns: 0.8fr 1.2fr;
@@ -257,5 +261,15 @@
     &-next {
       transform: rotate(180deg);
     }
+  }
+}
+
+
+@keyframes load {
+  from{
+    transform: rotate(0);
+  }
+  to{
+    transform: rotate(360deg);
   }
 }

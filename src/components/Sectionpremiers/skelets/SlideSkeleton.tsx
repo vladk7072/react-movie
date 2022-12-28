@@ -6,7 +6,7 @@ export const SlideSkeleton = () => (
     speed={2}
     width={"100%"}
     height={383}
-    viewBox="0 0 100% 383"
+    viewBox="0 0 655 383"
     backgroundColor="#878787"
     foregroundColor="#a1a1a1"
   >

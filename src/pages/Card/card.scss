@@ -1,5 +1,22 @@
 .card {
   padding: 60px 0;
+  &__load{
+    &-page{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: calc(100vh - 102px - 68px);
+      svg{
+        max-width: 300px;
+        width: 100%;
+      }
+      span{
+        margin: 0 3px;
+        color: #81becb;
+      }
+    }
+  }
   &__item {
     display: grid;
     grid-template-columns: minmax(260px, 370px) minmax(auto, 885px);

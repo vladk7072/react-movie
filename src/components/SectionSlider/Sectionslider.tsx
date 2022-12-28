@@ -101,7 +101,6 @@ export const Sectionslider = () => {
             ))}
           </Swiper>
         )}
-
         <div className="sectslider__btns">
           <div
             className="sectslider__btn sectslider__btn-prev"

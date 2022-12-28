@@ -8,7 +8,7 @@ export const cardRtk = createApi({
     baseUrl: "https://kinopoiskapiunofficial.tech/api/",
   }),
   endpoints: (build) => ({
-    getTopItemFilm: build.query<TopFilmType, string>({
+    getItemFilm: build.query<TopFilmType, string>({
       query: (body) => ({
         url: `v2.2/films/${body}`,
         headers: {
@@ -17,7 +17,7 @@ export const cardRtk = createApi({
         },
       }),
     }),
-    getTopItemVideos: build.query<AnyARecord, string>({
+    getItemVideos: build.query<AnyARecord, string>({
       query: (body) => ({
         url: `v2.2/films/${body}/videos`,
         headers: {
@@ -30,4 +30,4 @@ export const cardRtk = createApi({
 });
 
 
-export const { useLazyGetTopItemFilmQuery, useLazyGetTopItemVideosQuery } = cardRtk;
+export const { useLazyGetItemFilmQuery, useLazyGetItemVideosQuery } = cardRtk;
