@@ -1,10 +1,10 @@
 import React from "react";
-import { Footer } from "../components/Footer/Footer";
-import { Header } from "../components/Header/Header";
 import { HomeContent } from "./Home/HomeContent";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Card } from "./Card/Card";
 import { Page404 } from "./ErrorPages/Page404";
+import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
 
 export const MainPageModel = () => {
   return (

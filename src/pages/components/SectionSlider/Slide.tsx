@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react";
-import { ItemTopFilmsResponse } from "./../../models/top-films";
 import "./sectionslider.scss";
 import { Link } from "react-router-dom";
 import { SlideSkeleton } from "./skelets/SlideSkeleton";
+import { ItemTopFilmsResponse } from "../../../models/top-films";
 
 interface PropsType {
   item: ItemTopFilmsResponse;

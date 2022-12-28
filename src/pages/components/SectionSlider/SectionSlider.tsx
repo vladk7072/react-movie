@@ -1,6 +1,4 @@
 import React from "react";
-import { useGetTopFilmsQuery } from "../../redux/rtk/homeRtk";
-import { ItemTopFilmsResponse } from "../../models/top-films";
 import { Sectionsliderskeleton } from "./skelets/SectionSliderSkeleton";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,6 +11,8 @@ import "./sectionslider.scss";
 import { Slide } from "./Slide";
 import { Title } from "../Title/Title";
 import { SlideSkeleton } from "./skelets/SlideSkeleton";
+import { useGetTopFilmsQuery } from "../../../redux/rtk/homeRtk";
+import { ItemTopFilmsResponse } from "../../../models/top-films";
 
 export const Sectionslider = () => {
   const {

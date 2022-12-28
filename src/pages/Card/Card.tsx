@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { SlideSkeleton } from "../../components/SectionPremiers/skelets/SlideSkeleton";
-import { Title } from "../../components/Title/Title";
+import { SlideSkeleton } from "../components/SectionPremiers/skelets/SlideSkeleton";
+import { Title } from "../components/Title/Title";
 import { MovieUndefinded } from "../ErrorPages/MovieUndefinded";
 import {
   useLazyGetItemVideosQuery,

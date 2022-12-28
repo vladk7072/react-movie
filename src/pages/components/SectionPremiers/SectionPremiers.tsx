@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useLazyGetPremiersFilmsQuery } from "../../redux/rtk/homeRtk";
 import { PremiersSkeleton } from "./skelets/PremiersSkeleton";
 import { PaginationSkelet } from "./skelets/PaginationSkelet";
 import { Slide } from "./Slide";
 import { Title } from "../Title/Title";
 import "./sectionpremiers.scss";
 import { SlideSkeleton } from "./skelets/SlideSkeleton";
+import { useLazyGetPremiersFilmsQuery } from "../../../redux/rtk/homeRtk";
 
 export const Sectionpremiers = () => {
   const monthList = [

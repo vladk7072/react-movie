@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
-import { PremierItemResponse } from "../../models/premiers-films";
 import { Link } from "react-router-dom";
+import { PremierItemResponse } from "../../../models/premiers-films";
 import { SlideSkeleton } from "./skelets/SlideSkeleton";
 
 interface PropsType {
