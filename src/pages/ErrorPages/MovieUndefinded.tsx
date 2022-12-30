@@ -33,9 +33,17 @@ export const MovieUndefinded: FC<PropsType> = ({ pathId }) => {
           />
         </g>
       </svg>
-      <div className="header__logo-title">
-        Не найдено фильм с id:
-        <span>{pathId}</span>
+      <div className="header__logo-title card__logo-title">
+        {pathId === "/card" ? (
+          <>
+            Не найдено параметра для запроса фильма
+          </>
+        ) : (
+          <>
+            Не найдено фильм с id:
+            <span>{pathId}</span>
+          </>
+        )}
       </div>
     </div>
   );

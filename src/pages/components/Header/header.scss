@@ -10,20 +10,19 @@
     font-family: "Rubik", sans-serif;
     font-size: 15px;
     background-color: transparent;
-    padding: 15px 45px 15px 25px;
+    padding: 12px 40px 12px 20px;
     background: #1b1e1e;
     border: 2px solid #252a2c;
     border-radius: 93px;
-    width: 100%;
-    transition: border 0.2s;
+    width: 220px;
+    transition: all 0.2s;
     color: #fff;
     &:focus {
       outline: transparent;
       border: 2px solid rgb(149, 149, 149);
+      width: 350px;
     }
     &-inner {
-      max-width: 350px;
-      width: 100%;
       position: relative;
     }
     &-svg {

@@ -6,9 +6,9 @@ import { Page404 } from "./ErrorPages/Page404";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 
-export const MainPageModel = () => {
+const MainPageModel = () => {
   return (
-    <div className="main-model main-page">
+    <div className="main-model">
       <Header />
       <div className="main container">
         <div className="main-model__content">
@@ -27,3 +27,4 @@ export const MainPageModel = () => {
     </div>
   );
 };
+export default MainPageModel;

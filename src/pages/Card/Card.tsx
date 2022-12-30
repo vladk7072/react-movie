@@ -42,7 +42,7 @@ export const Card = () => {
   if (dataFetching && dataLoading) {
     return (
       <div className="card__load-page">
-        <div className="header__logo-title">Movie Card Loading</div>
+        <div className="header__logo-title">Загрузка карточки кинофильма</div>
       </div>
     );
   }
@@ -55,7 +55,7 @@ export const Card = () => {
   return (
     <div className="card">
       <div className="container">
-        <Title title="Про выбранный кинофильм" />
+        <Title title="О выбранном кинофильме" />
         <div className="card__item">
           <div className="card__item-image">
             {isErrorLoadig ? (

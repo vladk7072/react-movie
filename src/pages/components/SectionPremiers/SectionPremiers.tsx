@@ -216,8 +216,7 @@ export const Sectionpremiers = () => {
                 <path
                   fill="#fff"
                   d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50"
-                >
-                </path>
+                ></path>
               </svg>
             ) : (
               <>Знайдено: {premiersData?.total} результатов</>
@@ -246,35 +245,41 @@ export const Sectionpremiers = () => {
           ))}
       </div>
       {premiersSuccess ? (
-        <div className="sectionpremiers__pagination">
-          <div
-            className={
-              sliceFrom === 0
-                ? "sectionpremiers__pagination-btn sectionpremiers__pagination-prev sectionpremiers__pagination-btn--diswork"
-                : "sectionpremiers__pagination-btn sectionpremiers__pagination-prev"
-            }
-            onClick={() => setPrevPagination()}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-              <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
-            </svg>
-          </div>
-          <div className="sectionpremiers__pagination-count">
-            {countPagination}
-          </div>
-          <div
-            className={
-              nextDisable
-                ? "sectionpremiers__pagination-btn sectionpremiers__pagination-next sectionpremiers__pagination-btn--diswork"
-                : "sectionpremiers__pagination-btn sectionpremiers__pagination-next"
-            }
-            onClick={() => setNextPagination()}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-              <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
-            </svg>
-          </div>
-        </div>
+        <>
+          {premiersData?.total === 0 ? (
+            <></>
+          ) : (
+            <div className="sectionpremiers__pagination">
+              <div
+                className={
+                  sliceFrom === 0
+                    ? "sectionpremiers__pagination-btn sectionpremiers__pagination-prev sectionpremiers__pagination-btn--diswork"
+                    : "sectionpremiers__pagination-btn sectionpremiers__pagination-prev"
+                }
+                onClick={() => setPrevPagination()}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                </svg>
+              </div>
+              <div className="sectionpremiers__pagination-count">
+                {countPagination}
+              </div>
+              <div
+                className={
+                  nextDisable
+                    ? "sectionpremiers__pagination-btn sectionpremiers__pagination-next sectionpremiers__pagination-btn--diswork"
+                    : "sectionpremiers__pagination-btn sectionpremiers__pagination-next"
+                }
+                onClick={() => setNextPagination()}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                </svg>
+              </div>
+            </div>
+          )}
+        </>
       ) : (
         <div className="sectionpremiers__pagination">
           <PaginationSkelet />

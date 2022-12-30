@@ -14,7 +14,7 @@ export const Header = () => {
             <input
               className="header__input"
               type="text"
-              placeholder="Поиск по {в разработке}"
+              placeholder="Поиск.."
             />
             <svg
             className="header__input-svg"
