@@ -1,3 +1,5 @@
+import homeSectionPremiersSlice from './slices/homeSectionPremiersSlice';
+import homeTopSliderSlice from './slices/homeTopSliderSlice';
 import cardSlice from './slices/cardSlice';
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { homeRtk } from "./rtk/homeRtk";
@@ -6,6 +8,8 @@ import { cardRtk } from "./rtk/cardRtk";
 const mainReducer = combineReducers({
   [homeRtk.reducerPath]: homeRtk.reducer,
   [cardRtk.reducerPath]: cardRtk.reducer,
+  homeTopSliderSlice,
+  homeSectionPremiersSlice,
   cardSlice
 });
 

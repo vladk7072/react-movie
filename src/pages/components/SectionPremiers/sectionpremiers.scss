@@ -12,6 +12,7 @@
   }
   &__inputs {
     display: flex;
+    align-items: start;
     position: relative;
   }
   &__data {
@@ -91,8 +92,9 @@
     color: #fff;
     display: flex;
     align-items: center;
-    margin-left: 12px;
+    margin: 14px 0 0 12px;
     svg{
+      margin-top: 0;
       height: 40px;
       width: 40px;
       animation: load infinite 1s linear;

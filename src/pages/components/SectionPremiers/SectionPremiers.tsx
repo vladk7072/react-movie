@@ -6,36 +6,31 @@ import { Title } from "../Title/Title";
 import "./sectionpremiers.scss";
 import { SlideSkeleton } from "./skelets/SlideSkeleton";
 import { useLazyGetPremiersFilmsQuery } from "../../../redux/rtk/homeRtk";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
+import { homeSectionPremiersSlice } from "../../../redux/slices/homeSectionPremiersSlice";
 
 export const Sectionpremiers = () => {
-  const monthList = [
-    "январь",
-    "февраль",
-    "март",
-    "апрель",
-    "май",
-    "июнь",
-    "июль",
-    "август",
-    "сентябрь",
-    "октябрь",
-    "ноябрь",
-    "декабрь",
-  ];
-  const monthListFake = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const {
+    monthList,
+    monthListFake,
+    portion,
+    sliceFrom,
+    countPagination,
+    nextDisable,
+    isOpenList,
+    activeMonth,
+    year
+  } = useAppSelector((state) => state.homeSectionPremiersSlice);
+  const dispatch = useAppDispatch();
+  const {
+    setPortion,
+    setSliceFrom,
+    setCountPagination,
+    setNextDisable,
+    setIsOpenList,
+    setActiveMonth,
+    setYear
+  } = homeSectionPremiersSlice.actions;
 
   const [
     getPremiers,
@@ -47,29 +42,21 @@ export const Sectionpremiers = () => {
     },
   ] = useLazyGetPremiersFilmsQuery();
 
-  const [portion, setPortion] = useState(16);
-  const [sliceFrom, setSliceFrom] = useState(0);
-  const [countPagination, setCountPagination] = useState(1);
-  const [nextDisable, setNextDisable] = useState(false);
-
   const premiersItemsPortion = premiersData?.items.slice(sliceFrom, portion);
   const setDefaultPagination = () => {
-    setPortion(16);
-    setSliceFrom(0);
+    dispatch(setPortion(16));
+    dispatch(setSliceFrom(0));
   };
 
-  const [isOpenList, setIsOpenList] = useState(false);
-  const [activeMonth, setActiveMonth] = useState(0);
-  const [year, setYear] = useState("2022");
 
   const [cancelValueYear, setCancelValueYear] = useState(false);
 
   const setClickItem = (i: number) => {
     setCancelValueYear(false);
-    setActiveMonth(i);
-    setIsOpenList(false);
-    setCountPagination(1);
-    setNextDisable(false);
+    dispatch(setActiveMonth(i));
+    dispatch(setIsOpenList(false));
+    dispatch(setCountPagination(1));
+    dispatch(setNextDisable(false));
     if (year.length === 4) {
       const numYear = Number(year);
       setCancelValueYear(false);
@@ -84,8 +71,8 @@ export const Sectionpremiers = () => {
   };
 
   const setFetch = () => {
-    setCountPagination(1);
-    setNextDisable(false);
+    dispatch(setCountPagination(1));
+    dispatch(setNextDisable(false));
     // @ts-ignore
     if (year.length === 4) {
       const numYear = Number(year);
@@ -106,12 +93,12 @@ export const Sectionpremiers = () => {
       year: 2022,
     });
     setDefaultPagination();
-    setCountPagination(1);
-    setNextDisable(false);
+    dispatch(setCountPagination(1));
+    dispatch(setNextDisable(false));
 
     const handleClickOutside = (event: any) => {
       if (!event.path.includes(monthRef.current)) {
-        setIsOpenList(false);
+        dispatch(setIsOpenList(false));
       }
     };
     document.body.addEventListener("click", handleClickOutside);
@@ -124,23 +111,23 @@ export const Sectionpremiers = () => {
   const setNextPagination = () => {
     // @ts-ignore
     if (premiersData?.total > portion) {
-      setSliceFrom(portion);
-      setPortion(portion + 16);
-      setCountPagination(countPagination + 1);
+      dispatch(setSliceFrom(portion));
+      dispatch(setPortion(portion + 16));
+      dispatch(setCountPagination(countPagination + 1));
       // @ts-ignore
       if (premiersData?.total < portion + 16) {
-        setNextDisable(true);
+        dispatch(setNextDisable(true));
       }
     }
   };
   const setPrevPagination = () => {
     // @ts-ignore
     if (sliceFrom > 0) {
-      setPortion(portion - 16);
-      setSliceFrom(portion - 32);
-      setCountPagination(countPagination - 1);
+      dispatch(setPortion(portion - 16));
+      dispatch(setSliceFrom(portion - 32));
+      dispatch(setCountPagination(countPagination - 1));
     }
-    setNextDisable(false);
+    dispatch(setNextDisable(false));
   };
 
   const monthRef = useRef(null);
@@ -149,6 +136,13 @@ export const Sectionpremiers = () => {
     if (key === "Enter") {
       setFetch();
     }
+  };
+
+  const setActionList = (boolean: boolean) => {
+    dispatch(setIsOpenList(boolean));
+  };
+  const setActionYear = (string: string) => {
+    dispatch(setYear(string));
   };
 
   return (
@@ -162,7 +156,7 @@ export const Sectionpremiers = () => {
                 ? "sectionpremiers__data sectionpremiers__data--active"
                 : "sectionpremiers__data"
             }
-            onClick={() => setIsOpenList(true)}
+            onClick={() => setActionList(true)}
           >
             {monthList[activeMonth]}
           </div>
@@ -187,7 +181,7 @@ export const Sectionpremiers = () => {
         <div className="sectionpremiers__data-box">
           <input
             value={year}
-            onChange={(e) => setYear(e.target.value.replace(/[^0-9.]/g, ""))}
+            onChange={(e) => setActionYear(e.target.value.replace(/[^0-9.]/g, ""))}
             onKeyUp={(e) => pressButton(e.key)}
             onBlur={() => setFetch()}
             className={
@@ -219,7 +213,7 @@ export const Sectionpremiers = () => {
                 ></path>
               </svg>
             ) : (
-              <>Знайдено: {premiersData?.total} результатов</>
+              <>Найдено: {premiersData?.total} результатов</>
             )}
           </div>
         )}

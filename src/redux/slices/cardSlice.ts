@@ -5,7 +5,9 @@ const initialState = {};
 export const cardSlice = createSlice({
   name: "cardSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    
+  },
 });
 
 export default cardSlice.reducer;
