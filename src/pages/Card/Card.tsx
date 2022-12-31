@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { SlideSkeleton } from "../components/SectionPremiers/skelets/SlideSkeleton";
 import { Title } from "../components/Title/Title";
 import { MovieUndefinded } from "../ErrorPages/MovieUndefinded";
@@ -7,19 +8,32 @@ import {
   useLazyGetItemFilmQuery,
 } from "./../../redux/rtk/cardRtk";
 import "./card.scss";
+import { cardSlice } from "../../redux/slices/cardSlice";
 
 export const Card = () => {
+  const { hoursLength, minutesLength, isMoreDescription, isErrorLoadig } =
+    useAppSelector((state) => state.cardSlice);
+  const {
+    setHoursLength,
+    setMinutesLength,
+    setIsMoreDescription,
+    setIsErrorLoading,
+  } = cardSlice.actions;
+  const dispatch = useAppDispatch();
+
   const [
     getItem,
-    { data: itemData, isFetching: dataFetching, isLoading: dataLoading, isError },
+    {
+      data: itemData,
+      isFetching: dataFetching,
+      isLoading: dataLoading,
+      isError,
+    },
   ] = useLazyGetItemFilmQuery();
   const [getVideo, { data: videosData }] = useLazyGetItemVideosQuery();
 
   const path = document.location.pathname;
   const pathId = path.replace("/card/", "");
-
-  const [hoursLength, setHoursLength] = useState(0);
-  const [minutesLength, setMinutesLength] = useState(0);
 
   useEffect(() => {
     getItem(pathId);
@@ -29,16 +43,14 @@ export const Card = () => {
   useEffect(() => {
     if (itemData?.filmLength) {
       const getTimeFromMins = (mins: number) => {
-        setHoursLength(Math.trunc(mins / 60));
-        setMinutesLength(mins % 60);
+        dispatch(setHoursLength(Math.trunc(mins / 60)));
+        dispatch(setMinutesLength(mins % 60));
       };
       getTimeFromMins(itemData?.filmLength);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemData]);
 
-  const [isMoreDescription, setIsMoreDescription] = useState(false);
-  const [isErrorLoadig, setIsErrorLoading] = useState(false);
-  
   if (dataFetching && dataLoading) {
     return (
       <div className="card__load-page">
@@ -46,11 +58,16 @@ export const Card = () => {
       </div>
     );
   }
-  if(isError){
-    return(
-      <MovieUndefinded pathId={pathId} />
-    )
+  if (isError) {
+    return <MovieUndefinded pathId={pathId} />;
   }
+
+  const visibleDescription = (boolean: boolean) => {
+    dispatch(setIsMoreDescription(boolean));
+  };
+  const setErrorLoadImg = (boolean: boolean) => {
+    dispatch(setIsErrorLoading(boolean));
+  };
 
   return (
     <div className="card">
@@ -75,7 +92,7 @@ export const Card = () => {
               <img
                 className="card__item-img"
                 src={itemData?.posterUrl}
-                onError={() => setIsErrorLoading(true)}
+                onError={() => setErrorLoadImg(true)}
                 alt=""
               />
             )}
@@ -142,14 +159,14 @@ export const Card = () => {
                 {isMoreDescription ? (
                   <div
                     className="card__table-text card__table-link"
-                    onClick={() => setIsMoreDescription(false)}
+                    onClick={() => visibleDescription(false)}
                   >
                     Меньше
                   </div>
                 ) : (
                   <div
                     className="card__table-text card__table-link"
-                    onClick={() => setIsMoreDescription(true)}
+                    onClick={() => visibleDescription(true)}
                   >
                     Больше
                   </div>

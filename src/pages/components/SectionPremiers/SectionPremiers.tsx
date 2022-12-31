@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { PremiersSkeleton } from "./skelets/PremiersSkeleton";
 import { PaginationSkelet } from "./skelets/PaginationSkelet";
 import { Slide } from "./Slide";
@@ -19,7 +19,8 @@ export const Sectionpremiers = () => {
     nextDisable,
     isOpenList,
     activeMonth,
-    year
+    year,
+    cancelValueYear,
   } = useAppSelector((state) => state.homeSectionPremiersSlice);
   const dispatch = useAppDispatch();
   const {
@@ -29,7 +30,8 @@ export const Sectionpremiers = () => {
     setNextDisable,
     setIsOpenList,
     setActiveMonth,
-    setYear
+    setYear,
+    setCancelValueYear,
   } = homeSectionPremiersSlice.actions;
 
   const [
@@ -48,25 +50,22 @@ export const Sectionpremiers = () => {
     dispatch(setSliceFrom(0));
   };
 
-
-  const [cancelValueYear, setCancelValueYear] = useState(false);
-
   const setClickItem = (i: number) => {
-    setCancelValueYear(false);
+    dispatch(setCancelValueYear(false));
     dispatch(setActiveMonth(i));
     dispatch(setIsOpenList(false));
     dispatch(setCountPagination(1));
     dispatch(setNextDisable(false));
     if (year.length === 4) {
       const numYear = Number(year);
-      setCancelValueYear(false);
+      dispatch(setCancelValueYear(false));
       getPremiers({
         month: monthListFake[i],
         year: numYear,
       });
       setDefaultPagination();
     } else {
-      setCancelValueYear(true);
+      dispatch(setCancelValueYear(true));
     }
   };
 
@@ -76,14 +75,14 @@ export const Sectionpremiers = () => {
     // @ts-ignore
     if (year.length === 4) {
       const numYear = Number(year);
-      setCancelValueYear(false);
+      dispatch(setCancelValueYear(false));
       getPremiers({
         month: monthListFake[activeMonth],
         year: numYear,
       });
       setDefaultPagination();
     } else {
-      setCancelValueYear(true);
+      dispatch(setCancelValueYear(true));
     }
   };
 
@@ -181,7 +180,9 @@ export const Sectionpremiers = () => {
         <div className="sectionpremiers__data-box">
           <input
             value={year}
-            onChange={(e) => setActionYear(e.target.value.replace(/[^0-9.]/g, ""))}
+            onChange={(e) =>
+              setActionYear(e.target.value.replace(/[^0-9.]/g, ""))
+            }
             onKeyUp={(e) => pressButton(e.key)}
             onBlur={() => setFetch()}
             className={

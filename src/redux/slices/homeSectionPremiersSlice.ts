@@ -8,6 +8,7 @@ interface InitialStateType {
   countPagination: number
   nextDisable: boolean
   isOpenList: boolean
+  cancelValueYear: boolean
   activeMonth: number
   year: string
 }
@@ -47,7 +48,8 @@ const initialState: InitialStateType = {
   nextDisable: false,
   isOpenList: false,
   activeMonth: 0,
-  year: "2022"
+  year: "2022",
+  cancelValueYear: false
 };
 
 export const homeSectionPremiersSlice = createSlice({
@@ -71,6 +73,9 @@ export const homeSectionPremiersSlice = createSlice({
     },
     setIsOpenList(state, action: PayloadAction<boolean>){
       state.isOpenList = action.payload;
+    },
+    setCancelValueYear(state, action: PayloadAction<boolean>){
+      state.cancelValueYear = action.payload;
     },
     setYear(state, action: PayloadAction<string>){
       state.year = action.payload;
