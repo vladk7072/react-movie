@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ReactPlayer from "react-player";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { SlideSkeleton } from "../components/SectionPremiers/skelets/SlideSkeleton";
 import { Title } from "../components/Title/Title";
@@ -30,7 +31,8 @@ export const Card = () => {
       isError,
     },
   ] = useLazyGetItemFilmQuery();
-  const [getVideo, { data: videosData }] = useLazyGetItemVideosQuery();
+  const [getVideo, { data: videosData, isSuccess: videosSuccess }] =
+    useLazyGetItemVideosQuery();
 
   const path = document.location.pathname;
   const pathId = path.replace("/card/", "");
@@ -40,6 +42,7 @@ export const Card = () => {
     getVideo(pathId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   useEffect(() => {
     if (itemData?.filmLength) {
       const getTimeFromMins = (mins: number) => {
@@ -95,6 +98,25 @@ export const Card = () => {
                 onError={() => setErrorLoadImg(true)}
                 alt=""
               />
+            )}
+            {videosSuccess && videosData && (
+              <div className="trailer">
+                <ul className="trailer__list">
+                  {videosData.items.map((item, index) => (
+                    <li className="trailer__item" key={index}>
+                      {item.site === "YOUTUBE" && (
+                        <div className="trailer__player">
+                          <h6 className="trailer__player-title">{item.name}</h6>
+                          <ReactPlayer
+                            url={item.url}
+                            controls={true}
+                          />
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </div>
           <div className="card__item-box">

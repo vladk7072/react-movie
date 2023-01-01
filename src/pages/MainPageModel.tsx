@@ -5,6 +5,7 @@ import { Card } from "./Card/Card";
 import { Page404 } from "./ErrorPages/Page404";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
+import { CardAside } from "./Card/CardAside";
 
 const MainPageModel = () => {
   return (
@@ -20,7 +21,11 @@ const MainPageModel = () => {
               <Route path="*" element={<Page404 />} />
             </Routes>
           </div>
-          <div className="main-model__aside"></div>
+          <div className="main-model__aside">
+            <Routes>
+              <Route path="/card/*" element={<CardAside />} />
+            </Routes>
+          </div>
         </div>
       </div>
       <Footer />

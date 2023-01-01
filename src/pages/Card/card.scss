@@ -1,17 +1,16 @@
 .card {
-  padding: 60px 0;
-  &__load{
-    &-page{
+  &__load {
+    &-page {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       height: calc(100vh - 96px - 68px);
-      svg{
+      svg {
         max-width: 300px;
         width: 100%;
       }
-      span{
+      span {
         margin: 0 3px;
         color: #81becb;
       }
@@ -21,7 +20,7 @@
     display: grid;
     grid-template-columns: minmax(260px, 370px) minmax(auto, 885px);
     grid-gap: 30px;
-    &-img{
+    &-img {
       box-shadow: 7px 7px 16px rgba(0, 0, 0, 0.25);
       border-radius: 4px;
     }
@@ -122,11 +121,68 @@
       cursor: pointer;
     }
   }
-  &__logo{
-    &-title{
+  &__logo {
+    &-title {
       max-width: 320px;
       width: 100%;
       text-align: center;
+    }
+  }
+  &__aside {
+    border-radius: 5px;
+    border: 1px solid #2b2b2b;
+    box-shadow: 0px 7px 16px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    &-title {
+      font-family: "Rubik", sans-serif;
+      font-weight: 300;
+      font-size: 21px;
+      line-height: 24px;
+      color: #fff;
+      padding: 18px 20px;
+      background: #212121;
+    }
+    &-list {
+      background: rgba(28, 29, 31, 0.5);
+    }
+    &-item {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      padding: 15px;
+      border-top: 1px solid #2b2b2b;
+      cursor: pointer;
+      &-textbox{
+        margin-left: 15px;
+      }
+      &-title {
+        font-family: "Rubik", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 23px;
+        color: #fff;
+        &:first-child{
+          color: #81becb;
+        }
+      }
+    }
+  }
+}
+.trailer {
+  &__player {
+    div {
+      max-width: 100% !important;
+      height: 250px !important;
+    }
+    &-title {
+      display: inline-block;
+      margin: 15px 0 10px;
+      font-family: "Rubik", sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 23px;
+      color: #fff;
+      border-bottom: 2px solid #81becb;
+      padding-bottom: 4px;
     }
   }
 }
