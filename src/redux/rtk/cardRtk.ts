@@ -2,6 +2,7 @@ import { ItemSimilarsResponse } from './../../models/item-similars';
 import { ItemVideoResponse } from './../../models/item-videos';
 import { TopFilmType } from './../../models/rtk-body-models/getTopFilm';
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { ItemImagesResponse } from '../../models/item-images';
 
 export const cardRtk = createApi({
   reducerPath: "cardRtk",
@@ -27,7 +28,7 @@ export const cardRtk = createApi({
         },
       }),
     }),
-    getItemImages: build.query<any, string>({
+    getItemImages: build.query<ItemImagesResponse, string>({
       query: (body) => ({
         url: `v2.2/films/${body}/images`,
         headers: {

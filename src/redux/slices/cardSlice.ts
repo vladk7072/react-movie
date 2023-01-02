@@ -4,14 +4,16 @@ interface InitialStateType {
   hoursLength: number
   minutesLength: number
   isMoreDescription: boolean
-  isErrorLoadig: boolean
+  isErrorLoading: boolean
+  open: boolean
 }
 
 const initialState: InitialStateType = {
   hoursLength: 0,
   minutesLength: 0,
   isMoreDescription: false,
-  isErrorLoadig: false
+  isErrorLoading: false,
+  open: false
 };
 
 export const cardSlice = createSlice({
@@ -28,7 +30,10 @@ export const cardSlice = createSlice({
       state.isMoreDescription = action.payload;
     },
     setIsErrorLoading(state, action: PayloadAction<boolean>){
-      state.isErrorLoadig = action.payload;
+      state.isErrorLoading = action.payload;
+    },
+    setOpen(state, action: PayloadAction<boolean>){
+      state.open = action.payload;
     },
   },
 });
