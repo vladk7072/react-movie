@@ -1,4 +1,95 @@
 .footer {
-  padding: 25px 0;
+  padding: 30px 0;
   box-shadow: 0px -7px 16px rgb(0 0 0 / 25%);
+  &__top {
+    display: flex;
+    align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #323232;
+  }
+  &__description {
+    margin-left: 30%;
+    max-width: 800px;
+    width: 100%;
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    color: #fff;
+    padding-left: 15px;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background-color: #81becb;
+    }
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+  }
+  &__socials{
+    display: flex;
+    align-items: center;
+  }
+  &__social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border: 2px solid #323232;
+    border-radius: 50%;
+    transition: border 0.2s;
+    &:hover {
+      border: 2px solid #81becb;
+      a {
+        svg {
+          path {
+            fill: #81becb;
+          }
+        }
+      }
+    }
+    & + & {
+      margin-left: 10px;
+    }
+    a {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        height: 60%;
+        width: 60%;
+        path {
+          transition: fill .2s;
+          fill: #323232;
+        }
+      }
+    }
+  }
+  &__copy,
+  &__policy{
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    color: #fff;
+  }
+  &__policy{
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color .2s;
+    &:hover{
+      color: #81becb;
+    }
+  }
 }
