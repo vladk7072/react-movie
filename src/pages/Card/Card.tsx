@@ -7,11 +7,9 @@ import { MovieUndefinded } from "../ErrorPages/MovieUndefinded";
 import {
   useLazyGetItemVideosQuery,
   useLazyGetItemFilmQuery,
-  // useLazyGetItemImagesQuery
 } from "./../../redux/rtk/cardRtk";
 import "./card.scss";
 import { cardSlice } from "../../redux/slices/cardSlice";
-import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
 export const Card = () => {
@@ -20,14 +18,12 @@ export const Card = () => {
     minutesLength,
     isMoreDescription,
     isErrorLoading,
-    open,
   } = useAppSelector((state) => state.cardSlice);
   const {
     setHoursLength,
     setMinutesLength,
     setIsMoreDescription,
     setIsErrorLoading,
-    setOpen,
   } = cardSlice.actions;
   const dispatch = useAppDispatch();
 
@@ -42,16 +38,12 @@ export const Card = () => {
   ] = useLazyGetItemFilmQuery();
   const [getVideo, { data: videosData, isSuccess: videosSuccess }] =
     useLazyGetItemVideosQuery();
-
-  // const [getImages, {data: imagesData, isSuccess: imagesSuccess}] = useLazyGetItemImagesQuery();
-
   const path = document.location.pathname;
   const pathId = path.replace("/card/", "");
 
   useEffect(() => {
     getItem(pathId);
     getVideo(pathId);
-    // getImages(pathId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -82,9 +74,6 @@ export const Card = () => {
   };
   const setErrorLoadImg = (boolean: boolean) => {
     dispatch(setIsErrorLoading(boolean));
-  };
-  const setList = (boolean: boolean) => {
-    dispatch(setOpen(boolean));
   };
 
   return (
@@ -207,24 +196,6 @@ export const Card = () => {
                 )}
               </div>
             )}
-            <div className="card__gallery">
-              <button
-                className="card__gallery-btn"
-                type="button"
-                onClick={() => setList(true)}
-              >
-                Open Lightbox
-              </button>
-              <Lightbox
-                open={open}
-                close={() => setList(false)}
-                slides={[
-                  { src: "/image1.jpg" },
-                  { src: "/image2.jpg" },
-                  { src: "/image3.jpg" },
-                ]}
-              />
-            </div>
           </div>
         </div>
       </div>

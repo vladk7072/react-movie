@@ -9,7 +9,7 @@
   &__image {
     position: relative;
     z-index: 2;
-    &::before{
+    &::before {
       content: "";
       position: absolute;
       top: 0;
@@ -21,6 +21,9 @@
       z-index: -1;
     }
   }
+  &__img{
+    object-fit: cover;
+  }
   &__rating {
     position: absolute;
     top: 5px;
@@ -30,7 +33,6 @@
   }
   &__img {
     object-fit: cover;
-    height: 370px;
     border-radius: 4px;
     &-error {
       position: relative;
@@ -52,7 +54,7 @@
           fill: #ddd;
         }
       }
-      &--loader{
+      &--loader {
         animation: loader infinite 2s linear;
       }
     }
@@ -69,7 +71,7 @@
   }
   &__btn {
     position: absolute;
-    top: 165px;
+    top: 50%;
     z-index: 1;
     display: flex;
     align-items: center;
@@ -135,12 +137,11 @@
   }
 }
 
-
 @keyframes loader {
-  from{
+  from {
     transform: rotate(0);
   }
-  from{
+  from {
     transform: rotate(-360deg);
   }
 }

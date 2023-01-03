@@ -2,7 +2,6 @@ import { ItemSimilarsResponse } from './../../models/item-similars';
 import { ItemVideoResponse } from './../../models/item-videos';
 import { TopFilmType } from './../../models/rtk-body-models/getTopFilm';
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ItemImagesResponse } from '../../models/item-images';
 
 export const cardRtk = createApi({
   reducerPath: "cardRtk",
@@ -28,15 +27,6 @@ export const cardRtk = createApi({
         },
       }),
     }),
-    getItemImages: build.query<ItemImagesResponse, string>({
-      query: (body) => ({
-        url: `v2.2/films/${body}/images`,
-        headers: {
-          "X-API-KEY": "2d6f4996-3732-4ecc-ad4b-6787aed18135",
-          "Content-Type": "application/json",
-        },
-      }),
-    }),
     getItemSimilars: build.query<ItemSimilarsResponse, string>({
       query: (body) => ({
         url: `v2.2/films/${body}/similars`,
@@ -50,4 +40,4 @@ export const cardRtk = createApi({
 });
 
 
-export const { useLazyGetItemFilmQuery, useLazyGetItemVideosQuery, useLazyGetItemImagesQuery, useLazyGetItemSimilarsQuery } = cardRtk;
+export const { useLazyGetItemFilmQuery, useLazyGetItemVideosQuery, useLazyGetItemSimilarsQuery } = cardRtk;

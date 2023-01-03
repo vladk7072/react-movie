@@ -5,7 +5,6 @@ interface InitialStateType {
   minutesLength: number
   isMoreDescription: boolean
   isErrorLoading: boolean
-  open: boolean
 }
 
 const initialState: InitialStateType = {
@@ -13,7 +12,6 @@ const initialState: InitialStateType = {
   minutesLength: 0,
   isMoreDescription: false,
   isErrorLoading: false,
-  open: false
 };
 
 export const cardSlice = createSlice({
@@ -31,9 +29,6 @@ export const cardSlice = createSlice({
     },
     setIsErrorLoading(state, action: PayloadAction<boolean>){
       state.isErrorLoading = action.payload;
-    },
-    setOpen(state, action: PayloadAction<boolean>){
-      state.open = action.payload;
     },
   },
 });

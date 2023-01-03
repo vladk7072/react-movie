@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface InitialStateType {
-  monthList: string[]
-  monthListFake: string[]
-  portion: number
-  sliceFrom: number
-  countPagination: number
-  nextDisable: boolean
-  isOpenList: boolean
-  cancelValueYear: boolean
-  activeMonth: number
-  year: string
+  monthList: string[];
+  monthListFake: string[];
+  portion: number;
+  sliceFrom: number;
+  countPagination: number;
+  nextDisable: boolean;
+  isOpenList: boolean;
+  cancelValueYear: boolean;
+  activeMonth: number;
+  year: string;
 }
 
 const initialState: InitialStateType = {
@@ -49,35 +49,35 @@ const initialState: InitialStateType = {
   isOpenList: false,
   activeMonth: 0,
   year: "2022",
-  cancelValueYear: false
+  cancelValueYear: false,
 };
 
 export const homeSectionPremiersSlice = createSlice({
   name: "homeSectionPremiersSlice",
   initialState,
   reducers: {
-    setPortion(state, action: PayloadAction<number>){
+    setPortion(state, action: PayloadAction<number>) {
       state.portion = action.payload;
     },
-    setSliceFrom(state, action: PayloadAction<number>){
+    setSliceFrom(state, action: PayloadAction<number>) {
       state.sliceFrom = action.payload;
     },
-    setCountPagination(state, action: PayloadAction<number>){
+    setCountPagination(state, action: PayloadAction<number>) {
       state.countPagination = action.payload;
     },
-    setActiveMonth(state, action: PayloadAction<number>){
+    setActiveMonth(state, action: PayloadAction<number>) {
       state.activeMonth = action.payload;
     },
-    setNextDisable(state, action: PayloadAction<boolean>){
+    setNextDisable(state, action: PayloadAction<boolean>) {
       state.nextDisable = action.payload;
     },
-    setIsOpenList(state, action: PayloadAction<boolean>){
+    setIsOpenList(state, action: PayloadAction<boolean>) {
       state.isOpenList = action.payload;
     },
-    setCancelValueYear(state, action: PayloadAction<boolean>){
+    setCancelValueYear(state, action: PayloadAction<boolean>) {
       state.cancelValueYear = action.payload;
     },
-    setYear(state, action: PayloadAction<string>){
+    setYear(state, action: PayloadAction<string>) {
       state.year = action.payload;
     },
   },

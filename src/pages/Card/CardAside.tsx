@@ -25,50 +25,51 @@ export const CardAside = () => {
     setbtnList(false);
   };
 
-  if (similarsData?.total !== 0) {
-    return (
-      <>
-        {similarsSuccess && similarsData && (
-          <div className="card__aside">
-            <div className="card__aside-title">Похожие:</div>
-            <ul className="card__aside-list">
-              {similarsData.items.map(
-                (item, index) =>
-                  index < countItemsAside && (
-                    <li
-                      className="card__aside-item"
-                      key={item.filmId}
-                      onClick={() => setNewPathId(`${"/card/" + item.filmId}`)}
-                    >
-                      <div className="card__aside-item-image">
-                        <img
-                          className="card__aside-item-img"
-                          src={item.posterUrlPreview}
-                          alt=""
-                        />
+  return (
+    <>
+      {similarsData?.total !== 0 && similarsSuccess && similarsData && (
+        <div className="card__aside">
+          <div className="card__aside-title">Похожие:</div>
+          <ul className="card__aside-list">
+            {similarsData.items.map(
+              (item, index) =>
+                index < countItemsAside && (
+                  <li
+                    className="card__aside-item"
+                    key={item.filmId}
+                    onClick={() => setNewPathId(`${"/card/" + item.filmId}`)}
+                  >
+                    <div className="card__aside-item-image">
+                      <img
+                        className="card__aside-item-img"
+                        src={item.posterUrlPreview}
+                        alt=""
+                      />
+                    </div>
+                    <div className="card__aside-item-textbox">
+                      <div className="card__aside-item-title">
+                        {item.nameRu}
                       </div>
-                      <div className="card__aside-item-textbox">
+                      {item.nameOriginal && (
                         <div className="card__aside-item-title">
-                          {item.nameRu}
+                          "{item.nameOriginal}"
                         </div>
-                        {item.nameOriginal && (
-                          <div className="card__aside-item-title">
-                            "{item.nameOriginal}"
-                          </div>
-                        )}
-                      </div>
-                    </li>
-                  )
-              )}
-            </ul>
-            {btnList && (
-              <div className="card__aside-list-btn" onClick={() => setFullList(similarsData.total)}>Показать все</div>
+                      )}
+                    </div>
+                  </li>
+                )
             )}
-          </div>
-        )}
-      </>
-    );
-  }
-
-  return <></>;
+          </ul>
+          {similarsData.total > 6 && btnList && (
+            <div
+              className="card__aside-list-btn"
+              onClick={() => setFullList(similarsData.total)}
+            >
+              Показать все
+            </div>
+          )}
+        </div>
+      )}
+    </>
+  );
 };
