@@ -6,19 +6,15 @@ import { Title } from "../components/Title/Title";
 import { MovieUndefinded } from "../ErrorPages/MovieUndefinded";
 import {
   useLazyGetItemVideosQuery,
-  useLazyGetItemFilmQuery,
+  useLazyGetItemFilmQuery
 } from "./../../redux/rtk/cardRtk";
 import "./card.scss";
 import { cardSlice } from "../../redux/slices/cardSlice";
 import "yet-another-react-lightbox/styles.css";
 
 export const Card = () => {
-  const {
-    hoursLength,
-    minutesLength,
-    isMoreDescription,
-    isErrorLoading,
-  } = useAppSelector((state) => state.cardSlice);
+  const { hoursLength, minutesLength, isMoreDescription, isErrorLoading } =
+    useAppSelector((state) => state.cardSlice);
   const {
     setHoursLength,
     setMinutesLength,
@@ -26,7 +22,6 @@ export const Card = () => {
     setIsErrorLoading,
   } = cardSlice.actions;
   const dispatch = useAppDispatch();
-
   const [
     getItem,
     {
@@ -38,6 +33,7 @@ export const Card = () => {
   ] = useLazyGetItemFilmQuery();
   const [getVideo, { data: videosData, isSuccess: videosSuccess }] =
     useLazyGetItemVideosQuery();
+
   const path = document.location.pathname;
   const pathId = path.replace("/card/", "");
 
@@ -102,6 +98,9 @@ export const Card = () => {
                 onError={() => setErrorLoadImg(true)}
                 alt=""
               />
+            )}
+            {videosSuccess && videosData?.total === 0 && (
+              <div className="trailer__title">Трейлеры не найдены</div>
             )}
             {videosSuccess && videosData && (
               <div className="trailer">
@@ -173,7 +172,7 @@ export const Card = () => {
             </div>
             {itemData?.description && itemData?.shortDescription && (
               <div className="card__table">
-                <div className="card__table-title">{itemData?.nameRu}</div>
+                <div className="card__table-title">Описание</div>
                 <p className="card__table-text card__table-text-mt">
                   {isMoreDescription
                     ? itemData?.description

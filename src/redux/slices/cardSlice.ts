@@ -5,6 +5,8 @@ interface InitialStateType {
   minutesLength: number
   isMoreDescription: boolean
   isErrorLoading: boolean
+  countItemsAside: number
+  btnList: boolean
 }
 
 const initialState: InitialStateType = {
@@ -12,6 +14,8 @@ const initialState: InitialStateType = {
   minutesLength: 0,
   isMoreDescription: false,
   isErrorLoading: false,
+  countItemsAside: 6,
+  btnList: true
 };
 
 export const cardSlice = createSlice({
@@ -29,6 +33,12 @@ export const cardSlice = createSlice({
     },
     setIsErrorLoading(state, action: PayloadAction<boolean>){
       state.isErrorLoading = action.payload;
+    },
+    setCountItemsAside(state, action: PayloadAction<number>){
+      state.countItemsAside = action.payload;
+    },
+    setbtnList(state, action: PayloadAction<boolean>){
+      state.btnList = action.payload;
     },
   },
 });

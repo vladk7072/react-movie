@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { useLazyGetItemSimilarsQuery } from "../../redux/rtk/cardRtk";
+import {cardSlice} from "../../redux/slices/cardSlice";
 
 export const CardAside = () => {
+
+  const { countItemsAside, btnList } = useAppSelector(state => state.cardSlice);
+  const dispatch = useAppDispatch();
+  const { setCountItemsAside, setbtnList } = cardSlice.actions;
+
   const [getSimilars, { data: similarsData, isSuccess: similarsSuccess }] =
     useLazyGetItemSimilarsQuery();
 
@@ -17,18 +24,18 @@ export const CardAside = () => {
     document.location.pathname = newPathId;
   };
 
-  const [countItemsAside, setCountItemsAside] = useState(6);
-  const [btnList, setbtnList] = useState(true);
-
   const setFullList = (count: number) => {
-    setCountItemsAside(count);
-    setbtnList(false);
+    dispatch(setCountItemsAside(count));
+    dispatch(setbtnList(false));
   };
 
   return (
-    <>
+    <div className="card__aside">
+      {similarsData?.total === 0 && similarsSuccess && similarsData && (
+        <div className="card__aside-title">Похожие фильмы не найдены</div>
+      )}
       {similarsData?.total !== 0 && similarsSuccess && similarsData && (
-        <div className="card__aside">
+        <>
           <div className="card__aside-title">Похожие:</div>
           <ul className="card__aside-list">
             {similarsData.items.map(
@@ -68,8 +75,8 @@ export const CardAside = () => {
               Показать все
             </div>
           )}
-        </div>
+        </>
       )}
-    </>
+    </div>
   );
 };
