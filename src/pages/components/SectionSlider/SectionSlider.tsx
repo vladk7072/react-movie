@@ -19,7 +19,7 @@ export const Sectionslider = () => {
     data: topData,
     isSuccess: topSuccess,
     isFetching: topFetching,
-    isError: topError
+    isError: topError,
   } = useGetTopFilmsQuery();
 
   const swiperNavPrevref = React.useRef(null);
@@ -36,13 +36,27 @@ export const Sectionslider = () => {
               prevEl: swiperNavPrevref.current,
               nextEl: swiperNavNextref.current,
             }}
-            slidesPerView={5}
-            slidesPerGroup={2}
-            spaceBetween={30}
+            slidesPerView={2}
+            slidesPerGroup={1}
+            spaceBetween={10}
             speed={300}
             onInit={(swiper) => {
               swiper.navigation.init();
               swiper.navigation.update();
+            }}
+            breakpoints={{
+              620: {
+                slidesPerView: 3,
+                spaceBetween: 20
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 30
+              },
+              1440: {
+                slidesPerView: 5,
+                spaceBetween: 30
+              },
             }}
           >
             {topData?.films.map((item: ItemTopFilmsResponse) => (
@@ -59,10 +73,24 @@ export const Sectionslider = () => {
               prevEl: swiperNavPrevref.current,
               nextEl: swiperNavNextref.current,
             }}
-            slidesPerView={5}
+            slidesPerView={2}
             slidesPerGroup={1}
-            spaceBetween={30}
+            spaceBetween={10}
             speed={300}
+            breakpoints={{
+              620: {
+                slidesPerView: 3,
+                spaceBetween: 20
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 30
+              },
+              1440: {
+                slidesPerView: 5,
+                spaceBetween: 30
+              },
+            }}
           >
             {[...new Array(6)].map((_, i) => (
               <SwiperSlide key={i}>
@@ -78,10 +106,24 @@ export const Sectionslider = () => {
               prevEl: swiperNavPrevref.current,
               nextEl: swiperNavNextref.current,
             }}
-            slidesPerView={5}
+            slidesPerView={2}
             slidesPerGroup={1}
-            spaceBetween={30}
+            spaceBetween={10}
             speed={300}
+            breakpoints={{
+              620: {
+                slidesPerView: 3,
+                spaceBetween: 20
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 30
+              },
+              1440: {
+                slidesPerView: 5,
+                spaceBetween: 30
+              },
+            }}
           >
             {[...new Array(6)].map((_, i) => (
               <SwiperSlide key={i}>

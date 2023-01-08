@@ -1,5 +1,6 @@
 .header {
   padding: 25px 0;
+  background-color: #1c1d1f;
   box-shadow: 0px 7px 16px rgba(0, 0, 0, 0.25);
   &__wrapper {
     display: flex;
@@ -78,8 +79,8 @@
   }
 }
 @media (max-width: 550px) {
-  .header{
-    &__input{
+  .header {
+    &__input {
       &:focus {
         outline: transparent;
         border: 2px solid rgb(149, 149, 149);
@@ -89,18 +90,40 @@
   }
 }
 @media (max-width: 420px) {
-  .header{
-    &__input{
-      padding: 10px 30px 10px 12px;
-      &-svg{
-        right: 0;
+  .header {
+    &__logo {
+      &-title {
+        white-space: normal;
       }
     }
-    &__logo{
-      &-title{
-        white-space: normal;
-        padding-right: 20px;
-        margin-right: 15px;
+    &__input {
+      &-inner{
+        position: static;
+      }
+      &-mob{
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        width: 50%;
+        margin: 0 auto;
+        z-index: 2;
+        box-shadow: 0px 7px 16px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        visibility: hidden;
+        &--visible{
+          top: 90px;
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      &-svg {
+        position: absolute;
+        top: 35px;
+        right: 15px;
+        height: 21px;
+        width: 21px;
+        padding: 15px;
       }
     }
   }

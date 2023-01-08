@@ -8,8 +8,10 @@
   border-bottom: 2px solid #81becb;
   margin-bottom: 40px;
 }
-@media (max-width: 768px){
-  .title{
+@media (max-width: 768px) {
+  .title {
     margin-bottom: 30px;
+    font-size: 28px;
+    line-height: 32px;
   }
 }

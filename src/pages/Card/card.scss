@@ -23,6 +23,9 @@
     &-img {
       box-shadow: 7px 7px 16px rgba(0, 0, 0, 0.25);
       border-radius: 4px;
+      &-mob{
+        display: none;
+      }
     }
     &-title {
       font-family: "Rubik", sans-serif;
@@ -199,6 +202,7 @@
   &__player {
     div {
       max-width: 100% !important;
+      width: 100% !important;
       height: 250px !important;
     }
     &-title {
@@ -211,6 +215,51 @@
       color: #fff;
       border-bottom: 2px solid #81becb;
       padding-bottom: 4px;
+    }
+  }
+}
+
+@media(max-width: 1440px){
+  .card{
+    &__item{
+      grid-template-columns: minmax(260px, 370px) minmax(auto, 485px);
+      grid-gap: 30px; 
+    }
+  }
+}
+@media(max-width: 1204px){
+  .card{
+    &__item{
+      grid-template-columns: minmax(260px, 370px) minmax(auto, auto);
+      grid-gap: 30px; 
+    }
+  }
+}
+@media(max-width: 840px){
+  .card{
+    &__item{
+      display: flex;
+      flex-direction: column-reverse;
+      grid-template-columns: 1fr;
+      grid-gap: 0;
+      &-img{
+        display: none;
+        &-mob{
+          max-width: 350px;
+          width: 100%;
+          display: block;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}
+@media(max-width: 620px){
+  .card{
+    &__item{
+      &-head{
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   }
 }

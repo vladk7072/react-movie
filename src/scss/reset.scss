@@ -1,3 +1,5 @@
+*,
+body,
 html {
   box-sizing: border-box;
 }
@@ -5,7 +7,7 @@ html {
 *,
 *::after,
 *::before {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 ul,

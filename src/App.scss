@@ -15,7 +15,7 @@ body {
     grid-template-columns: minmax(auto, 1340px) minmax(auto, 440px);
     grid-gap: 30px;
   }
-  &__wrapper{
+  &__wrapper {
     padding: 60px 0;
   }
 }
@@ -32,9 +32,23 @@ body {
 .swiper-pagination-bullet-active {
   background-color: transparent !important;
 }
-@media (max-width: 768px){
+@media (max-width: 1440px) {
   .main-model {
-    &__wrapper{
+    &__content {
+      grid-template-columns: minmax(auto, 915px) minmax(350px, 440px);
+    }
+  }
+}
+@media (max-width: 1205px) {
+  .main-model {
+    &__content {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .main-model {
+    &__wrapper {
       padding: 40px 0;
     }
   }
