@@ -12,10 +12,8 @@ export const Slide: FC<PropsType> = ({ item }) => {
   const [isErrorLoading, setIsErrorLoading] = useState(false);
 
   return (
-    <Link
+    <div
       className="sectionpremiers__item"
-      key={item.kinopoiskId}
-      to={`${"/card/" + item.kinopoiskId}`}
     >
       <div className="sectionpremiers__item-image">
         {isErrorLoading ? (
@@ -65,12 +63,12 @@ export const Slide: FC<PropsType> = ({ item }) => {
           ))}
         </ul>
         <div className="sectionpremiers__item-footer">
-          <div className="sectionpremiers__item-link">Более делатально</div>
+          <Link className="sectionpremiers__item-link" to={`${"/card/" + item.kinopoiskId}`}>Более делатально</Link>
           <div className="sectionpremiers__item-release">
             Дата релиза: {item.premiereRu}
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };

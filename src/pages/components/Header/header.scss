@@ -49,6 +49,7 @@
       color: #fff;
       padding-right: 25px;
       position: relative;
+      white-space: nowrap;
       &::before {
         content: "";
         position: absolute;
@@ -74,5 +75,33 @@
   }
   to {
     background-color: red;
+  }
+}
+@media (max-width: 550px) {
+  .header{
+    &__input{
+      &:focus {
+        outline: transparent;
+        border: 2px solid rgb(149, 149, 149);
+        width: 220px;
+      }
+    }
+  }
+}
+@media (max-width: 420px) {
+  .header{
+    &__input{
+      padding: 10px 30px 10px 12px;
+      &-svg{
+        right: 0;
+      }
+    }
+    &__logo{
+      &-title{
+        white-space: normal;
+        padding-right: 20px;
+        margin-right: 15px;
+      }
+    }
   }
 }

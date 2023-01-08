@@ -1,11 +1,9 @@
 import React from "react";
 import { HomeContent } from "./Home/HomeContent";
 import { Routes, Route, Navigate } from "react-router-dom";
-// import { Card } from "./Card/Card";
 import { Page404 } from "./ErrorPages/Page404";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-// import { CardAside } from "./Card/CardAside";
 import { CardСontainer } from "./Card/CardContainer"
 
 const MainPageModel = () => {

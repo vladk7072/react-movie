@@ -8,8 +8,9 @@ import "./topslider.scss";
 import { useAppSelector } from "../../../hooks/redux-hooks";
 
 export const TopSlider = () => {
-  
-  const { arrayImages, arrayTitles } = useAppSelector(state => state.homeTopSliderSlice);
+  const { arrayImages, arrayTitles } = useAppSelector(
+    (state) => state.homeTopSliderSlice
+  );
 
   return (
     <Swiper
@@ -18,8 +19,9 @@ export const TopSlider = () => {
       modules={[Pagination, Autoplay]}
       pagination={{ clickable: true }}
       loop
+      autoHeight={true}
       autoplay={{
-        "delay": 3000,
+        delay: 30000000,
       }}
       speed={500}
     >

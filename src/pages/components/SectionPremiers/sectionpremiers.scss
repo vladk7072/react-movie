@@ -1,5 +1,4 @@
 .sectionpremiers {
-  padding-bottom: 100px;
   &__title {
     font-family: "Rubik", sans-serif;
     font-weight: 500;
@@ -52,6 +51,7 @@
       left: 0;
       max-width: 210px;
       width: 100%;
+      box-shadow: 0px 7px 16px rgba(0, 0, 0, 0.25);
     }
     &-item {
       font-family: "Rubik", sans-serif;
@@ -93,10 +93,13 @@
     display: flex;
     align-items: center;
     margin-left: 12px;
-    svg{
+    svg {
       height: 40px;
       width: 40px;
       animation: load infinite 1s linear;
+    }
+    &-mob{
+      display: none;
     }
   }
   &__items {
@@ -118,7 +121,8 @@
     }
     &-img {
       object-fit: cover;
-      border-radius: 4px;
+      border-radius: 4px 0 0 4px;
+      height: 100%;
     }
     &-textbox {
       padding: 30px 10px 20px;
@@ -126,6 +130,9 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
+      border: 2px solid #81becb;
+      border-left: none;
+      border-radius: 0 4px 4px 0;
     }
     &-genres {
       display: flex;
@@ -184,7 +191,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      grid-gap: 10px;
+      gap: 10px;
+      margin-top: 15px;
     }
     &-link {
       font-family: "Rubik", sans-serif;
@@ -264,12 +272,81 @@
   }
 }
 
-
 @keyframes load {
-  from{
+  from {
     transform: rotate(0);
   }
-  to{
+  to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1230px) {
+  .sectionpremiers {
+    &__item {
+      &-footer {
+        flex-direction: column;
+        align-items: start;
+        grid-template: 15px;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .sectionpremiers {
+    &__items {
+      grid-template-columns: 1fr;
+      grid-gap: 25px;
+    }
+    &__pagination {
+      &-btn {
+        border: 2px solid #81becb;
+        svg {
+          width: 13px;
+          height: 13px;
+        }
+        &:hover {
+          border: 2px solid #81becb;
+          svg {
+            path {
+              fill: #81becb;
+            }
+          }
+        }
+        &--diswork {
+          border: 2px solid #515151;
+          svg {
+            path {
+              fill: #515151;
+            }
+          }
+          &:hover {
+            border: 2px solid #515151;
+            svg {
+              path {
+                fill: #515151;
+              }
+            }
+          }
+        }
+      }
+    }
+    &__data {
+      &-list {
+        max-width: 100%;
+      }
+      &-item{
+        font-size: 21px;
+        line-height: 24px;
+      }
+    }
+    &__counter{
+      display: none;
+      &-mob{
+        margin-top: 30px;
+        margin-left: 0;
+        display: block;
+      }
+    }
   }
 }

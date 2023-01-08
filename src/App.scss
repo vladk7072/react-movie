@@ -32,3 +32,10 @@ body {
 .swiper-pagination-bullet-active {
   background-color: transparent !important;
 }
+@media (max-width: 768px){
+  .main-model {
+    &__wrapper{
+      padding: 40px 0;
+    }
+  }
+}

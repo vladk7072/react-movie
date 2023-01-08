@@ -19,7 +19,7 @@ export const Sectionslider = () => {
     data: topData,
     isSuccess: topSuccess,
     isFetching: topFetching,
-    isError: topError,
+    isError: topError
   } = useGetTopFilmsQuery();
 
   const swiperNavPrevref = React.useRef(null);
@@ -37,7 +37,7 @@ export const Sectionslider = () => {
               nextEl: swiperNavNextref.current,
             }}
             slidesPerView={5}
-            slidesPerGroup={1}
+            slidesPerGroup={2}
             spaceBetween={30}
             speed={300}
             onInit={(swiper) => {
