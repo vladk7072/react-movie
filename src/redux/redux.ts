@@ -4,13 +4,17 @@ import cardSlice from './slices/cardSlice';
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { homeRtk } from "./rtk/homeRtk";
 import { cardRtk } from "./rtk/cardRtk";
+import { topInputRtk } from './rtk/topInputRtk';
+import topInputSearchSlice from './slices/topInputSearchSlice';
 
 const mainReducer = combineReducers({
   [homeRtk.reducerPath]: homeRtk.reducer,
   [cardRtk.reducerPath]: cardRtk.reducer,
+  [topInputRtk.reducerPath]: topInputRtk.reducer,
   homeTopSliderSlice,
   homeSectionPremiersSlice,
-  cardSlice
+  cardSlice,
+  topInputSearchSlice
 });
 
 export const setupStore = () => {
@@ -20,6 +24,7 @@ export const setupStore = () => {
       ...getDefaultMiddleware(),
       homeRtk.middleware,
       cardRtk.middleware,
+      topInputRtk.middleware
     ],
   });
 };
