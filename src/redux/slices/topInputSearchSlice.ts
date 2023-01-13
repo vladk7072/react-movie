@@ -7,6 +7,9 @@ const initialState: TopInputSearchType = {
   pagesCount: 1,
   searchFilmsCountResult: 0,
   dataSuccess: false,
+  count: 1,
+  fetching: false,
+  hidden: false
 };
 
 export const topInputSearchSlice = createSlice({
@@ -22,6 +25,15 @@ export const topInputSearchSlice = createSlice({
     getSuccess(state, action: PayloadAction<boolean>) {
       state.dataSuccess = action.payload;
     },
+    setCount(state, action: PayloadAction<number>) {
+      state.count = action.payload;
+    },
+    setFetching(state, action: PayloadAction<boolean>) {
+      state.fetching = action.payload;
+    },
+    setHidden(state, action: PayloadAction<boolean>) {
+      state.hidden = action.payload;
+    }
   },
 });
 

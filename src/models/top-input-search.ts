@@ -4,6 +4,9 @@ export interface TopInputSearchType {
   films: TopInputSearchFilmType[]
   searchFilmsCountResult: number
   dataSuccess: boolean
+  count: number
+  fetching: boolean
+  hidden: boolean
 }
 
 export interface TopInputSearchFilmType {

@@ -11,6 +11,7 @@ import {
 import "./card.scss";
 import { cardSlice } from "../../redux/slices/cardSlice";
 import "yet-another-react-lightbox/styles.css";
+import { TopInputList } from "../components/TopInput/TopInputList";
 
 export const Card = () => {
   const { hoursLength, minutesLength, isMoreDescription, isErrorLoading } =
@@ -74,6 +75,9 @@ export const Card = () => {
 
   return (
     <div className="card">
+      <div className="topInput">
+        <TopInputList />
+      </div>
       <Title title="О выбранном кинофильме" />
       <div className="card__item">
         <div className="card__item-image">

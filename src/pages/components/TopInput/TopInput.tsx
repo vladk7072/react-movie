@@ -6,26 +6,43 @@ import { topInputSearchSlice } from "../../../redux/slices/topInputSearchSlice";
 
 export const TopInput = () => {
   const dispatch = useAppDispatch();
-  const { getState, getSuccess } = topInputSearchSlice.actions;
+  const { getState, getSuccess, setCount, setFetching, setHidden } =
+    topInputSearchSlice.actions;
+  const { count } = useAppSelector((state) => state.topInputSearchSlice);
 
   const [value, setValue] = useState("");
   const debounced = useDebounce(value);
-  const [getInputSearch, { data: searchData, isSuccess: dataSuccess }] =
-    useLazyGetTopInputSearchQuery();
+  const [
+    getInputSearch,
+    { data: searchData, isSuccess: dataSuccess, isFetching: dataFetching },
+  ] = useLazyGetTopInputSearchQuery();
+
+  useEffect(() => {
+    dispatch(setFetching(dataFetching));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataFetching]);
+  
+  useEffect(() => {
+    dispatch(setCount(1));
+    dispatch(setHidden(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debounced]);
+
   useEffect(() => {
     getInputSearch({
       keyword: debounced,
-      page: 1,
+      page: count,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debounced]);
+  }, [debounced, count]);
+
   useEffect(() => {
     if (searchData && dataSuccess) {
       dispatch(getState(searchData));
       dispatch(getSuccess(dataSuccess));
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchData])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchData]);
 
   const pressButton = (key: string) => {
     if (key === "Enter") {
@@ -60,11 +77,8 @@ export const TopInput = () => {
   const searchBtnRef = useRef(null);
   const searchInputRef = useRef(null);
 
-  const { keyword } = useAppSelector((state) => state.topInputSearchSlice);
-
   return (
     <div className="header__input-inner">
-      {debounced}: {keyword}
       <input
         onKeyUp={(e) => pressButton(e.key)}
         ref={searchInputRef}
