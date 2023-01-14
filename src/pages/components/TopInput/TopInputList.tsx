@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
 import { topInputSearchSlice } from "../../../redux/slices/topInputSearchSlice";
@@ -21,6 +21,20 @@ export const TopInputList = () => {
     dispatch(setHidden(false));
   };
 
+  const topInputListRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (!event.composedPath().includes(topInputListRef.current)) {
+        dispatch(setHidden(false));
+      }
+    };
+    document.body.addEventListener("click", handleClickOutside);
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   if (pagesCount === 0) {
     return null;
   }
@@ -28,7 +42,7 @@ export const TopInputList = () => {
   return (
     <>
       {hidden && (
-        <div className="topInput__wrapper">
+        <div className="topInput__wrapper" ref={topInputListRef}>
           <div className="topInput__btns">
             <div
               className={

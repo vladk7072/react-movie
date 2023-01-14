@@ -77,6 +77,19 @@ export const TopInput = () => {
   const searchBtnRef = useRef(null);
   const searchInputRef = useRef(null);
 
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (!event.composedPath().includes(searchInputRef.current)) {
+        setInputVisible(false);
+      }
+    };
+    document.body.addEventListener("click", handleClickOutside);
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="header__input-inner">
       <input

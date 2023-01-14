@@ -96,7 +96,7 @@ export const Sectionpremiers = () => {
     dispatch(setNextDisable(false));
 
     const handleClickOutside = (event: any) => {
-      if (!event.path.includes(monthRef.current)) {
+      if (!event.composedPath().includes(monthRef.current)) {
         dispatch(setIsOpenList(false));
       }
     };
