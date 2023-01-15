@@ -79,14 +79,22 @@ export const TopInput = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (!event.composedPath().includes(searchInputRef.current)) {
+      if (!event.composedPath().includes(searchBtnRef.current)) {
         setInputVisible(false);
+      }
+      if (event.composedPath().includes(searchInputRef.current)) {
+        setInputVisible(true);
       }
     };
     document.body.addEventListener("click", handleClickOutside);
     return () => {
       document.body.removeEventListener("click", handleClickOutside);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    dispatch(setHidden(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

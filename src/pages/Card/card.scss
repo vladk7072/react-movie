@@ -1,4 +1,9 @@
 .card {
+  &__img{
+    &-error{
+      height: 387px;
+    }
+  }
   &__load {
     &-page {
       display: flex;

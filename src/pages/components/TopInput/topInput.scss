@@ -1,6 +1,6 @@
 .topInput {
   position: absolute;
-  top: 120px;
+  top: 20px;
   right: 40px;
   z-index: 10;
   max-width: 400px;
@@ -10,6 +10,15 @@
     box-shadow: 0px 0px 30px rgb(0 0 0 / 25%);
     border-radius: 8px;
     padding: 15px;
+    &-non {
+      font-family: "Rubik", sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+    }
   }
   &__link {
     font-family: "Rubik", sans-serif;
@@ -74,9 +83,9 @@
     right: 15px;
   }
 }
-@media (max-width: 430px) {
+@media (max-width: 460px) {
   .topInput {
-    top: 110px;
+    top: 10px;
     right: 25px;
     left: 25px;
     max-width: auto;
@@ -85,14 +94,20 @@
 }
 @media (max-width: 420px) {
   .topInput {
-    top: 90px;
+    top: 76px;
     right: 20px;
     left: 20px;
     max-width: auto;
     width: auto;
-    &__wrapper{
+    &__wrapper {
       top: 80px;
       padding: 10px;
     }
+  }
+}
+@media (max-width: 375px) {
+  .topInput {
+    right: 0;
+    left: 0;
   }
 }

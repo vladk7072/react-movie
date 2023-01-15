@@ -5,12 +5,10 @@ import { topInputSearchSlice } from "../../../redux/slices/topInputSearchSlice";
 import "./../../components/TopInput/topInput.scss";
 
 export const TopInputList = () => {
-  const { dataSuccess, films, pagesCount, fetching, hidden } = useAppSelector(
-    (state) => state.topInputSearchSlice
-  );
-  const dispatch = useAppDispatch();
-  const { count } = useAppSelector((state) => state.topInputSearchSlice);
+  const { dataSuccess, films, count, pagesCount, fetching, hidden } =
+    useAppSelector((state) => state.topInputSearchSlice);
   const { setCount, setHidden } = topInputSearchSlice.actions;
+  const dispatch = useAppDispatch();
 
   const setFetchCount = (page: number) => {
     if (page !== 0) {
@@ -35,8 +33,8 @@ export const TopInputList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (pagesCount === 0) {
-    return null;
+  if (!dataSuccess) {
+    return <>{hidden && <div className="topInput__wrapper topInput__wrapper-non">Ничего не найдено</div>}</>;
   }
 
   return (

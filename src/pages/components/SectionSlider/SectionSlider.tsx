@@ -36,8 +36,8 @@ export const Sectionslider = () => {
               prevEl: swiperNavPrevref.current,
               nextEl: swiperNavNextref.current,
             }}
-            slidesPerView={2}
             slidesPerGroup={1}
+            slidesPerView={1}
             spaceBetween={10}
             speed={300}
             onInit={(swiper) => {
@@ -45,17 +45,21 @@ export const Sectionslider = () => {
               swiper.navigation.update();
             }}
             breakpoints={{
+              425: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
               620: {
                 slidesPerView: 3,
-                spaceBetween: 20
+                spaceBetween: 20,
               },
               1024: {
                 slidesPerView: 4,
-                spaceBetween: 30
+                spaceBetween: 30,
               },
               1440: {
                 slidesPerView: 5,
-                spaceBetween: 30
+                spaceBetween: 30,
               },
             }}
           >
@@ -73,22 +77,26 @@ export const Sectionslider = () => {
               prevEl: swiperNavPrevref.current,
               nextEl: swiperNavNextref.current,
             }}
-            slidesPerView={2}
             slidesPerGroup={1}
+            slidesPerView={1}
             spaceBetween={10}
             speed={300}
             breakpoints={{
+              425: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
               620: {
                 slidesPerView: 3,
-                spaceBetween: 20
+                spaceBetween: 20,
               },
               1024: {
                 slidesPerView: 4,
-                spaceBetween: 30
+                spaceBetween: 30,
               },
               1440: {
                 slidesPerView: 5,
-                spaceBetween: 30
+                spaceBetween: 30,
               },
             }}
           >
@@ -106,22 +114,26 @@ export const Sectionslider = () => {
               prevEl: swiperNavPrevref.current,
               nextEl: swiperNavNextref.current,
             }}
-            slidesPerView={2}
             slidesPerGroup={1}
+            slidesPerView={1}
             spaceBetween={10}
             speed={300}
             breakpoints={{
+              425: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
               620: {
                 slidesPerView: 3,
-                spaceBetween: 20
+                spaceBetween: 20,
               },
               1024: {
                 slidesPerView: 4,
-                spaceBetween: 30
+                spaceBetween: 30,
               },
               1440: {
                 slidesPerView: 5,
-                spaceBetween: 30
+                spaceBetween: 30,
               },
             }}
           >
