@@ -7,6 +7,7 @@ export interface TopInputSearchType {
   count: number
   fetching: boolean
   hidden: boolean
+  inputVisible: boolean
 }
 
 export interface TopInputSearchFilmType {

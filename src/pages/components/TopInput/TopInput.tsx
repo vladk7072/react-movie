@@ -6,9 +6,9 @@ import { topInputSearchSlice } from "../../../redux/slices/topInputSearchSlice";
 
 export const TopInput = () => {
   const dispatch = useAppDispatch();
-  const { getState, getSuccess, setCount, setFetching, setHidden } =
+  const { getState, getSuccess, setCount, setFetching, setHidden, setInputVisible } =
     topInputSearchSlice.actions;
-  const { count } = useAppSelector((state) => state.topInputSearchSlice);
+  const { count, inputVisible } = useAppSelector((state) => state.topInputSearchSlice);
 
   const [value, setValue] = useState("");
   const debounced = useDebounce(value);
@@ -46,31 +46,31 @@ export const TopInput = () => {
 
   const pressButton = (key: string) => {
     if (key === "Enter") {
-      setInputVisible(false);
+      dispatch(setInputVisible(false));
     }
   };
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (!event.path.includes(searchBtnRef.current)) {
-        setInputVisible(false);
+        dispatch(setInputVisible(false));
       }
       if (event.path.includes(searchInputRef.current)) {
-        setInputVisible(true);
+        dispatch(setInputVisible(true));
       }
     };
     document.body.addEventListener("click", handleClickOutside);
     return () => {
       document.body.removeEventListener("click", handleClickOutside);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [inputVisible, setInputVisible] = useState(false);
   const setInput = () => {
     if (inputVisible) {
-      setInputVisible(false);
+      dispatch(setInputVisible(false));
     } else {
-      setInputVisible(true);
+      dispatch(setInputVisible(true));
     }
   };
 
@@ -80,10 +80,10 @@ export const TopInput = () => {
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (!event.composedPath().includes(searchBtnRef.current)) {
-        setInputVisible(false);
+        dispatch(setInputVisible(false));
       }
       if (event.composedPath().includes(searchInputRef.current)) {
-        setInputVisible(true);
+        dispatch(setInputVisible(true));
       }
     };
     document.body.addEventListener("click", handleClickOutside);

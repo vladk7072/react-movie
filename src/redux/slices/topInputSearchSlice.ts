@@ -9,7 +9,8 @@ const initialState: TopInputSearchType = {
   dataSuccess: false,
   count: 1,
   fetching: false,
-  hidden: false
+  hidden: false,
+  inputVisible: false
 };
 
 export const topInputSearchSlice = createSlice({
@@ -33,7 +34,10 @@ export const topInputSearchSlice = createSlice({
     },
     setHidden(state, action: PayloadAction<boolean>) {
       state.hidden = action.payload;
-    }
+    },
+    setInputVisible(state, action: PayloadAction<boolean>) {
+      state.inputVisible = action.payload;
+    },
   },
 });
 
