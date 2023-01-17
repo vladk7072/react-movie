@@ -49,7 +49,7 @@ export const Footer = () => {
               </a>
             </li>
           </ul>
-          <div className="footer__policy">Политика конфиденциальности</div>
+          <div className="footer__policy">Проект написан в ознакомительных целях</div>
         </div>
       </div>
     </div>

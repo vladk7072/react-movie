@@ -268,3 +268,14 @@
     }
   }
 }
+@media(max-width: 420px){
+  .card{
+    &__item{
+      &-img{
+        &-mob{
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

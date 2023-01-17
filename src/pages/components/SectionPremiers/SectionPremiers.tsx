@@ -7,6 +7,7 @@ import "./sectionpremiers.scss";
 import { useLazyGetPremiersFilmsQuery } from "../../../redux/rtk/homeRtk";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
 import { homeSectionPremiersSlice } from "../../../redux/slices/homeSectionPremiersSlice";
+import { Link } from "react-scroll";
 
 export const Sectionpremiers = () => {
   const {
@@ -146,7 +147,7 @@ export const Sectionpremiers = () => {
   return (
     <div className="sectionpremiers">
       <Title title="Найти релизы по дате" />
-      <div className="sectionpremiers__inputs">
+      <div className="sectionpremiers__inputs" id="topPremiers">
         <div ref={monthRef} className="sectionpremiers__data-box">
           <div
             className={
@@ -246,7 +247,10 @@ export const Sectionpremiers = () => {
           [...new Array(4)].map((_, i) => <PremiersSkeleton key={i} />)}
         {premieresError &&
           [...new Array(4)].map((_, i) => (
-            <div className="sectslider__img-error sectslider-er__img-error" key={i}>
+            <div
+              className="sectslider__img-error sectslider-er__img-error"
+              key={i}
+            >
               <div className="sectslider__img-box">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32z" />
@@ -277,7 +281,11 @@ export const Sectionpremiers = () => {
               <div className="sectionpremiers__pagination-count">
                 {countPagination}
               </div>
-              <div
+              <Link
+                to="topPremiers"
+                duration={500}
+                smooth={true}
+                offset={-20}
                 className={
                   nextDisable
                     ? "sectionpremiers__pagination-btn sectionpremiers__pagination-next sectionpremiers__pagination-btn--diswork"
@@ -288,7 +296,7 @@ export const Sectionpremiers = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                   <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
                 </svg>
-              </div>
+              </Link>
             </div>
           )}
         </>

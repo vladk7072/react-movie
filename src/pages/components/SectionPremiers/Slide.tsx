@@ -7,13 +7,10 @@ interface PropsType {
 }
 
 export const Slide: FC<PropsType> = ({ item }) => {
-
   const [isErrorLoading, setIsErrorLoading] = useState(false);
 
   return (
-    <div
-      className="sectionpremiers__item"
-    >
+    <div className="sectionpremiers__item">
       <div className="sectionpremiers__item-image">
         {isErrorLoading ? (
           <div className="sectslider__img-error sectionpremiers-er__img-error">
@@ -36,32 +33,39 @@ export const Slide: FC<PropsType> = ({ item }) => {
         )}
       </div>
       <div className="sectionpremiers__item-textbox">
-        <h4 className="sectionpremiers__item-title">{item.nameRu}</h4>
-        <div className="sectionpremiers__item-countries-box">
-          <div className="sectionpremiers__item-countries-title">
-            {item.countries.length === 1 ? (
-              <span>Странa:</span>
-            ) : (
-              <span>Страны:</span>
-            )}
+        <div className="sectionpremiers__item-textbox-wrapper">
+          <h4 className="sectionpremiers__item-title">{item.nameRu}</h4>
+          <div className="sectionpremiers__item-countries-box">
+            <div className="sectionpremiers__item-countries-title">
+              {item.countries.length === 1 ? (
+                <span>Странa:</span>
+              ) : (
+                <span>Страны:</span>
+              )}
+            </div>
+            <ul className="sectionpremiers__item-countries">
+              {item.countries.map((country, i) => (
+                <li className="sectionpremiers__item-country" key={i}>
+                  {country.country}
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="sectionpremiers__item-countries">
-            {item.countries.map((country, i) => (
-              <li className="sectionpremiers__item-country" key={i}>
-                {country.country}
+          <ul className="sectionpremiers__item-genres">
+            {item.genres.map((itemGenre, i) => (
+              <li className="sectionpremiers__item-genre" key={i}>
+                {itemGenre.genre}
               </li>
             ))}
           </ul>
         </div>
-        <ul className="sectionpremiers__item-genres">
-          {item.genres.map((itemGenre, i) => (
-            <li className="sectionpremiers__item-genre" key={i}>
-              {itemGenre.genre}
-            </li>
-          ))}
-        </ul>
         <div className="sectionpremiers__item-footer">
-          <Link className="sectionpremiers__item-link" to={`${"/card/" + item.kinopoiskId}`}>Более делатально</Link>
+          <Link
+            className="sectionpremiers__item-link"
+            to={`${"/card/" + item.kinopoiskId}`}
+          >
+            Более делатально
+          </Link>
           <div className="sectionpremiers__item-release">
             Дата релиза: {item.premiereRu}
           </div>

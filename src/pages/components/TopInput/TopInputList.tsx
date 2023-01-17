@@ -5,7 +5,7 @@ import { topInputSearchSlice } from "../../../redux/slices/topInputSearchSlice";
 import "./../../components/TopInput/topInput.scss";
 
 export const TopInputList = () => {
-  const { dataSuccess, films, count, pagesCount, fetching, hidden } =
+  const { dataSuccess, films, count, pagesCount, fetching, hidden, inputVisible } =
     useAppSelector((state) => state.topInputSearchSlice);
   const { setCount, setHidden } = topInputSearchSlice.actions;
   const dispatch = useAppDispatch();

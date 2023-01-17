@@ -5,6 +5,10 @@
   z-index: 10;
   max-width: 400px;
   width: 100%;
+  transition: all .2s;
+  &-static{
+    top: 20px;
+  }
   &__wrapper {
     background-color: #1c1d1f;
     box-shadow: 0px 0px 30px rgb(0 0 0 / 25%);
@@ -82,6 +86,9 @@
 @media (max-width: 600px) {
   .topInput {
     right: 15px;
+    &-static{
+      top: 20px;
+    }
   }
 }
 @media (max-width: 460px) {
@@ -91,6 +98,9 @@
     left: 25px;
     max-width: auto;
     width: auto;
+    &-static{
+      top: 10px;
+    }
   }
 }
 @media (max-width: 420px) {
@@ -100,6 +110,9 @@
     left: 20px;
     max-width: auto;
     width: auto;
+    &-static{
+      top: 10px;
+    }
     &__wrapper {
       top: 80px;
       padding: 10px;
@@ -110,5 +123,8 @@
   .topInput {
     right: 0;
     left: 0;
+    &-static{
+      top: 10px;
+    }
   }
 }

@@ -6,9 +6,17 @@ import { topInputSearchSlice } from "../../../redux/slices/topInputSearchSlice";
 
 export const TopInput = () => {
   const dispatch = useAppDispatch();
-  const { getState, getSuccess, setCount, setFetching, setHidden, setInputVisible } =
-    topInputSearchSlice.actions;
-  const { count, inputVisible } = useAppSelector((state) => state.topInputSearchSlice);
+  const {
+    getState,
+    getSuccess,
+    setCount,
+    setFetching,
+    setHidden,
+    setInputVisible,
+  } = topInputSearchSlice.actions;
+  const { count, inputVisible } = useAppSelector(
+    (state) => state.topInputSearchSlice
+  );
 
   const [value, setValue] = useState("");
   const debounced = useDebounce(value);
@@ -19,9 +27,9 @@ export const TopInput = () => {
 
   useEffect(() => {
     dispatch(setFetching(dataFetching));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataFetching]);
-  
+
   useEffect(() => {
     dispatch(setCount(1));
     dispatch(setHidden(true));
@@ -63,7 +71,7 @@ export const TopInput = () => {
     return () => {
       document.body.removeEventListener("click", handleClickOutside);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const setInput = () => {
