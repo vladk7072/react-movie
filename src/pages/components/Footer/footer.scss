@@ -99,7 +99,7 @@
     &__description {
       margin-left: 10%;
     }
-    &__bottom{
+    &__bottom {
       flex-direction: column;
       align-items: start;
       gap: 20px;
@@ -108,12 +108,12 @@
 }
 @media (max-width: 620px) {
   .footer {
-    &__top{
+    &__top {
       flex-direction: column;
       align-items: start;
       gap: 20px;
     }
-    &__description{
+    &__description {
       margin-left: 0;
     }
   }

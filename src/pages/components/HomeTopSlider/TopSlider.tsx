@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import "./topslider.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "./topslider.scss";
 import { useAppSelector } from "../../../hooks/redux-hooks";
 
-export const TopSlider = () => {
+export const TopSlider: FC = () => {
   const { arrayImages, arrayTitles } = useAppSelector(
     (state) => state.homeTopSliderSlice
   );

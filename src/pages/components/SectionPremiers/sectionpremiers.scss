@@ -1,7 +1,7 @@
 .sectionpremiers {
-  &-er{
-    &__img{
-      &-error{
+  &-er {
+    &__img {
+      &-error {
         max-height: 100%;
         height: 100%;
         border-left: 2px solid #81becb;
@@ -110,7 +110,7 @@
       width: 40px;
       animation: load infinite 1s linear;
     }
-    &-mob{
+    &-mob {
       display: none;
     }
   }
@@ -346,14 +346,14 @@
       &-list {
         max-width: 100%;
       }
-      &-item{
+      &-item {
         font-size: 21px;
         line-height: 24px;
       }
     }
-    &__counter{
+    &__counter {
       display: none;
-      &-mob{
+      &-mob {
         margin-top: 30px;
         margin-left: 0;
         display: block;
@@ -361,10 +361,12 @@
     }
   }
 }
-// @media (max-width: 600px){
-//   .sectionpremiers{
-//     &__item{
-//       grid-template-columns: 0.8fr 1.2fr;
-//     }
-//   }
-// }
+@media (max-width: 460px) {
+  .sectionpremiers {
+    &__item {
+      &-textbox {
+        padding: 15px 10px 15px;
+      }
+    }
+  }
+}

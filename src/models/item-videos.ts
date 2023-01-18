@@ -1,10 +1,10 @@
 export interface ItemVideoResponse {
-  total: number
-  items: ItemVideo[]
+  total: number;
+  items: ItemVideo[];
 }
 
 export interface ItemVideo {
-  url: string
-  name: string
-  site: string
+  url: string;
+  name: string;
+  site: string;
 }

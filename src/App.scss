@@ -10,6 +10,8 @@ body {
 }
 
 .main-model {
+  background-image: url("./assets/home/bg-1.png");
+  background-repeat: no-repeat;
   &__content {
     display: grid;
     grid-template-columns: minmax(auto, 1340px) minmax(auto, 440px);

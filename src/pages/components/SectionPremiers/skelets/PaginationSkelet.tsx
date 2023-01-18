@@ -1,7 +1,7 @@
-import React from "react"
+import React, { FC } from "react"
 import ContentLoader from "react-content-loader"
 
-export const PaginationSkelet = () => (
+export const PaginationSkelet: FC = () => (
   <ContentLoader 
   className="sectionpremiers__pagination"
     speed={2}

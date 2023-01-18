@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Card } from "./Card";
 import { CardAside } from "./CardAside";
 
-export const CardСontainer = () => {
+export const CardСontainer: FC = () => {
   return (
     <div className="main-model__content">
       <Card />

@@ -1,8 +1,10 @@
 import React from "react";
+import { ScrollToTopOnMount } from "../../helper/RouterUp";
 
 export const Page404 = () => {
   return (
     <div className="card__load-page">
+      <ScrollToTopOnMount />
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <path
           fill="#ff9e68"

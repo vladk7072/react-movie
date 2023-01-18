@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { ScrollToTopOnMount } from "../../helper/RouterUp";
 
 type PropsType = {
   pathId: string | undefined;
@@ -6,6 +7,7 @@ type PropsType = {
 export const MovieUndefinded: FC<PropsType> = ({ pathId }) => {
   return (
     <div className="card__load-page">
+      <ScrollToTopOnMount />
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <g data-name="WWW Browser">
           <path

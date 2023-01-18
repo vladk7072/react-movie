@@ -1,9 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import "./header.scss";
 import { Link } from "react-router-dom";
 import { TopInput } from "../TopInput/TopInput";
 
-export const Header = () => {
+export const Header: FC = () => {
 
   return (
     <div className="header">

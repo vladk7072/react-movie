@@ -1,6 +1,6 @@
 .card {
-  &__img{
-    &-error{
+  &__img {
+    &-error {
       height: 387px;
     }
   }
@@ -28,7 +28,7 @@
     &-img {
       box-shadow: 7px 7px 16px rgba(0, 0, 0, 0.25);
       border-radius: 4px;
-      &-mob{
+      &-mob {
         display: none;
       }
     }
@@ -164,7 +164,7 @@
         padding: 7px 0;
         background-color: trasparent;
         cursor: pointer;
-        &:hover{
+        &:hover {
           background-color: #81becb;
           color: #000;
         }
@@ -193,7 +193,7 @@
   }
 }
 .trailer {
-  &__title{
+  &__title {
     margin-top: 20px;
     font-family: "Rubik", sans-serif;
     font-weight: 300;
@@ -225,32 +225,32 @@
   }
 }
 
-@media(max-width: 1440px){
-  .card{
-    &__item{
+@media (max-width: 1440px) {
+  .card {
+    &__item {
       grid-template-columns: minmax(260px, 370px) minmax(auto, 485px);
-      grid-gap: 30px; 
+      grid-gap: 30px;
     }
   }
 }
-@media(max-width: 1204px){
-  .card{
-    &__item{
+@media (max-width: 1204px) {
+  .card {
+    &__item {
       grid-template-columns: minmax(260px, 370px) minmax(auto, auto);
-      grid-gap: 30px; 
+      grid-gap: 30px;
     }
   }
 }
-@media(max-width: 840px){
-  .card{
-    &__item{
+@media (max-width: 840px) {
+  .card {
+    &__item {
       display: flex;
       flex-direction: column-reverse;
       grid-template-columns: 1fr;
       grid-gap: 0;
-      &-img{
+      &-img {
         display: none;
-        &-mob{
+        &-mob {
           max-width: 350px;
           width: 100%;
           display: block;
@@ -260,20 +260,20 @@
     }
   }
 }
-@media(max-width: 620px){
-  .card{
-    &__item{
-      &-head{
+@media (max-width: 620px) {
+  .card {
+    &__item {
+      &-head {
         grid-template-columns: repeat(2, 1fr);
       }
     }
   }
 }
-@media(max-width: 420px){
-  .card{
-    &__item{
-      &-img{
-        &-mob{
+@media (max-width: 420px) {
+  .card {
+    &__item {
+      &-img {
+        &-mob {
           max-width: 100%;
         }
       }

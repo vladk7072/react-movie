@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { Title } from "../components/Title/Title";
@@ -12,8 +12,9 @@ import { cardSlice } from "../../redux/slices/cardSlice";
 import "yet-another-react-lightbox/styles.css";
 import { TopInputList } from "../components/TopInput/TopInputList";
 import { useParams } from "react-router-dom";
+import { ScrollToTopOnMount } from "../../helper/RouterUp";
 
-export const Card = () => {
+export const Card: FC = () => {
   const { hoursLength, minutesLength, isMoreDescription, isErrorLoading } =
     useAppSelector((state) => state.cardSlice);
   const {
@@ -78,6 +79,7 @@ export const Card = () => {
 
   return (
     <div className="card">
+      <ScrollToTopOnMount />
       <div className="topInput">
         <TopInputList />
       </div>

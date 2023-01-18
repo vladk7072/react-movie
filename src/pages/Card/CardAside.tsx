@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { useLazyGetItemSimilarsQuery } from "../../redux/rtk/cardRtk";
 import { cardSlice } from "../../redux/slices/cardSlice";
 
-export const CardAside = () => {
+export const CardAside: FC = () => {
   const { countItemsAside, btnList } = useAppSelector(
     (state) => state.cardSlice
   );
@@ -22,7 +22,7 @@ export const CardAside = () => {
     if (pathId) {
       getSimilars(pathId);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathId]);
 
   const setNewPathId = (newPathId: string) => {

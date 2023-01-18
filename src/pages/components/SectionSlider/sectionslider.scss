@@ -34,6 +34,8 @@
     right: 0;
     bottom: 0;
     display: flex;
+    justify-self: start;
+    align-items: start;
   }
   &__img {
     object-fit: cover;

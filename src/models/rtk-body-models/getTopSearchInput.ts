@@ -1,4 +1,4 @@
 export type getTopInputSearch = {
-  keyword: string
-  page: number
-}
+  keyword: string;
+  page: number;
+};

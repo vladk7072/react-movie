@@ -1,25 +1,25 @@
 export interface PremiersFilmsResponse {
-  items: PremierItemResponse[]
-  total: number
+  items: PremierItemResponse[];
+  total: number;
 }
 
 export interface PremierItemResponse {
-  kinopoiskId: number
-  nameRu: string
-  nameEn: string
-  year: number
-  posterUrl: string
-  posterUrlPreview: string
-  countries: Country[]
-  genres: Genre[]
-  duration: number
-  premiereRu: string
+  kinopoiskId: number;
+  nameRu: string;
+  nameEn: string;
+  year: number;
+  posterUrl: string;
+  posterUrlPreview: string;
+  countries: Country[];
+  genres: Genre[];
+  duration: number;
+  premiereRu: string;
 }
 
 export interface Country {
-  country: string
+  country: string;
 }
 
 export interface Genre {
-  genre: string
+  genre: string;
 }
