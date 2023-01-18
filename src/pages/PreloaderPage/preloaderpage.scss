@@ -1,8 +1,10 @@
-.preloader{
-  &__img{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+.preloader {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__img {
+    height: 80px;
+    width: 80px;
   }
 }

@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollToTopOnMount } from "../../helper/RouterUp";
 
 export const Page404 = () => {
+  const [count, setCount] = useState(4);
+  setInterval(() => {
+    setCount(count - 1);
+  }, 1000);
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      document.location.pathname = "/home";
+    }, 4000);
+    return () => {
+      clearTimeout(timerId);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="card__load-page">
       <ScrollToTopOnMount />
@@ -62,6 +76,9 @@ export const Page404 = () => {
         />
       </svg>
       <div className="header__logo-title">Страница не найдена</div>
+      <div className="card__load-count">
+        Переход на главную страницу через: {count}
+      </div>
     </div>
   );
 };
