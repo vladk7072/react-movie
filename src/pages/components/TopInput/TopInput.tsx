@@ -60,10 +60,10 @@ export const TopInput = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (!event.path.includes(searchBtnRef.current)) {
+      if (!event.composedPath().includes(searchBtnRef.current)) {
         dispatch(setInputVisible(false));
       }
-      if (event.path.includes(searchInputRef.current)) {
+      if (event.composedPath().includes(searchInputRef.current)) {
         dispatch(setInputVisible(true));
       }
     };

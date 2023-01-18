@@ -5,7 +5,7 @@ import { topInputSearchSlice } from "../../../redux/slices/topInputSearchSlice";
 import "./../../components/TopInput/topInput.scss";
 
 export const TopInputList = () => {
-  const { dataSuccess, films, count, pagesCount, fetching, hidden, inputVisible } =
+  const { dataSuccess, films, count, pagesCount, fetching, hidden } =
     useAppSelector((state) => state.topInputSearchSlice);
   const { setCount, setHidden } = topInputSearchSlice.actions;
   const dispatch = useAppDispatch();
@@ -34,7 +34,15 @@ export const TopInputList = () => {
   }, []);
 
   if (!dataSuccess) {
-    return <>{hidden && <div className="topInput__wrapper topInput__wrapper-non">Ничего не найдено</div>}</>;
+    return (
+      <>
+        {hidden && (
+          <div className="topInput__wrapper topInput__wrapper-non">
+            Ничего не найдено
+          </div>
+        )}
+      </>
+    );
   }
 
   return (
@@ -63,7 +71,7 @@ export const TopInputList = () => {
                     x="0px"
                     y="0px"
                     viewBox="0 0 100 100"
-                    enable-background="new 0 0 0 0"
+                    enableBackground="new 0 0 0 0"
                     xmlSpace="preserve"
                   >
                     <path
@@ -102,9 +110,9 @@ export const TopInputList = () => {
             )}
           </div>
           {dataSuccess &&
-            films.map((film) => (
-              <>
-                {film.nameRu && (
+            films.map(
+              (film) =>
+                film.nameRu && (
                   <div key={film.filmId}>
                     <Link
                       className="topInput__link"
@@ -114,9 +122,8 @@ export const TopInputList = () => {
                       {film.nameRu}
                     </Link>
                   </div>
-                )}
-              </>
-            ))}
+                )
+            )}
         </div>
       )}
     </>

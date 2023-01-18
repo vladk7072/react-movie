@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 type PropsType = {
-  pathId: string;
+  pathId: string | undefined;
 };
 export const MovieUndefinded: FC<PropsType> = ({ pathId }) => {
   return (

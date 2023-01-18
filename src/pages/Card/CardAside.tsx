@@ -1,24 +1,29 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { useLazyGetItemSimilarsQuery } from "../../redux/rtk/cardRtk";
-import {cardSlice} from "../../redux/slices/cardSlice";
+import { cardSlice } from "../../redux/slices/cardSlice";
 
 export const CardAside = () => {
-
-  const { countItemsAside, btnList } = useAppSelector(state => state.cardSlice);
+  const { countItemsAside, btnList } = useAppSelector(
+    (state) => state.cardSlice
+  );
   const dispatch = useAppDispatch();
   const { setCountItemsAside, setbtnList } = cardSlice.actions;
 
   const [getSimilars, { data: similarsData, isSuccess: similarsSuccess }] =
     useLazyGetItemSimilarsQuery();
 
-  const path = document.location.pathname;
-  const pathId = path.replace("/card/", "");
+  const paramsid = useParams();
+  const arrayPathId = Object.values(paramsid);
+  const pathId = arrayPathId[0];
 
   useEffect(() => {
-    getSimilars(pathId);
+    if (pathId) {
+      getSimilars(pathId);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pathId]);
 
   const setNewPathId = (newPathId: string) => {
     document.location.pathname = newPathId;

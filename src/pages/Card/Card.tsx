@@ -11,6 +11,7 @@ import "./card.scss";
 import { cardSlice } from "../../redux/slices/cardSlice";
 import "yet-another-react-lightbox/styles.css";
 import { TopInputList } from "../components/TopInput/TopInputList";
+import { useParams } from "react-router-dom";
 
 export const Card = () => {
   const { hoursLength, minutesLength, isMoreDescription, isErrorLoading } =
@@ -34,14 +35,17 @@ export const Card = () => {
   const [getVideo, { data: videosData, isSuccess: videosSuccess }] =
     useLazyGetItemVideosQuery();
 
-  const path = document.location.pathname;
-  const pathId = path.replace("/card/", "");
+  const paramsid = useParams();
+  const arrayPathId = Object.values(paramsid);
+  const pathId = arrayPathId[0];
 
   useEffect(() => {
-    getItem(pathId);
-    getVideo(pathId);
+    if (pathId) {
+      getItem(pathId);
+      getVideo(pathId);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pathId]);
 
   useEffect(() => {
     if (itemData?.filmLength) {
