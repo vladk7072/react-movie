@@ -32,18 +32,14 @@ export const Sectionslider = () => {
         {topSuccess && (
           <Swiper
             modules={[Navigation]}
+            slidesPerGroup={1}
+            slidesPerView={1}
             navigation={{
               prevEl: swiperNavPrevref.current,
               nextEl: swiperNavNextref.current,
             }}
-            slidesPerGroup={1}
-            slidesPerView={1}
             spaceBetween={10}
             speed={300}
-            onInit={(swiper) => {
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
             breakpoints={{
               425: {
                 slidesPerView: 2,
@@ -73,12 +69,12 @@ export const Sectionslider = () => {
         {topFetching && (
           <Swiper
             modules={[Navigation]}
+            slidesPerGroup={1}
+            slidesPerView={1}
             navigation={{
               prevEl: swiperNavPrevref.current,
               nextEl: swiperNavNextref.current,
             }}
-            slidesPerGroup={1}
-            slidesPerView={1}
             spaceBetween={10}
             speed={300}
             breakpoints={{
@@ -110,12 +106,12 @@ export const Sectionslider = () => {
         {topError && (
           <Swiper
             modules={[Navigation]}
+            slidesPerGroup={1}
+            slidesPerView={1}
             navigation={{
               prevEl: swiperNavPrevref.current,
               nextEl: swiperNavNextref.current,
             }}
-            slidesPerGroup={1}
-            slidesPerView={1}
             spaceBetween={10}
             speed={300}
             breakpoints={{
