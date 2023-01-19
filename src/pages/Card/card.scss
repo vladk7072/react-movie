@@ -27,6 +27,7 @@
       line-height: 21px;
       color: #fff;
       margin-top: 10px;
+      text-align: center;
     }
   }
   &__item {
@@ -140,9 +141,10 @@
   }
   &__logo {
     &-title {
-      max-width: 320px;
+      max-width: 375px;
       width: 100%;
       text-align: center;
+      white-space: normal;
     }
   }
   &__aside {
@@ -250,6 +252,9 @@
   }
 }
 @media (max-width: 840px) {
+  .trailer{
+    margin-top: 12px;
+  }
   .card {
     &__item {
       display: flex;
@@ -284,6 +289,15 @@
         &-mob {
           max-width: 100%;
         }
+      }
+    }
+  }
+}
+@media (max-width: 401px) {
+  .card {
+    &__logo{
+      &-title{
+        max-width: 230px;
       }
     }
   }

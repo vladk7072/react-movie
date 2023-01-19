@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ScrollToTopOnMount } from "../../helper/RouterUp";
+import "./errors.scss";
 
 export const Page404 = () => {
   const [count, setCount] = useState(4);

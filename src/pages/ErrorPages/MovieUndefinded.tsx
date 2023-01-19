@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { ScrollToTopOnMount } from "../../helper/RouterUp";
+import "./errors.scss";
 
 type PropsType = {
   pathId: string | undefined;

@@ -92,11 +92,6 @@
 }
 @media (max-width: 420px) {
   .header {
-    &__logo {
-      &-title {
-        white-space: normal;
-      }
-    }
     &__input {
       &-inner {
         position: static;
