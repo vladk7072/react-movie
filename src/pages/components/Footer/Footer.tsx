@@ -18,7 +18,7 @@ export const Footer: FC = () => {
           </div>
         </div>
         <div className="footer__bottom">
-          <div className="footer__copy">© Все права наверное защищены. 2023</div>
+          <div className="footer__copy">©2023</div>
           <ul className="footer__socials">
             <li className="footer__social">
               <a href="https://t.me/samuraijs">
